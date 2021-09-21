@@ -117,5 +117,34 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::post('/file/cropp',      'MediaController@cropp');
             Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
         });
+
+
+            Route::get('/profile', function(){
+                    
+                return view('dashboard.profile.form');
+
+            });
+
+            Route::post('/profile/insert_personal_details',     'ProfileController@insert_personal_details');
+
+            Route::post('/profile/insert_general_details',     'ProfileController@insert_general_details');
+
+            Route::post('/profile/insert_contact_details_current',     'ProfileController@insert_contact_details_current');
+
+            Route::post('/profile/insert_contact_details_permanent',     'ProfileController@insert_contact_details_permanent');
+
+            Route::post('/profile/insert_emergency_contact_details',     'ProfileController@insert_emergency_contact_details');
+
+            Route::post('/profile/insert_qualification_details',     'ProfileController@insert_qualification_details');
+
+            Route::post('/profile/insert_work_experiance',     'ProfileController@insert_work_experiance');
+
+            Route::post('/profile/insert_bank_details',     'ProfileController@insert_bank_details');
+
+            Route::post('/profile/insert_file_details',     'ProfileController@insert_file_details');
+            
+           
+    
+   
+        });
     });
-});
