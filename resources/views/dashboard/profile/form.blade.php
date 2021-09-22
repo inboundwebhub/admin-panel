@@ -16,7 +16,7 @@
 
 @section('content')
 
-<div id="div1" style="width:250px;height:30px;display:none;background-color:green;">data successfully saved.</div>
+<div id="div1" class="form-group    " style="width:250px;height:30px;display:none;background-color:#90EE90;">data successfully saved.</div>
 
 <div class="col-md-6 mb-4">
     <div class="nav-tabs-boxed">
@@ -106,6 +106,9 @@
                                 <input type="file" name="profile_pic" id="profile_pic"
                                     class="input-xlarge ui-wizard-content ">
                             </div>
+
+                            <div> </div>
+                        
                         </div>
 
 
@@ -366,6 +369,8 @@
 
                                 </select>
                             </div>
+                           
+                            <div></div>
 
                             <div class="form-group">
                                 <label for="degree">Degree</label>
@@ -400,9 +405,11 @@
 
                         <div class="form-group">
                             <label for="">Skills</label>
-                            <input type="text" class="form-control" name="city" id="tags-input" />
+                            <input type="text" class="form-control" name="skill" id="tags-input" />
 
                         </div>
+
+                        <div class="form-group"></div>
 
                         <div class="form-group">
                             <label for="">Known language</label>
@@ -411,6 +418,8 @@
                             <input type="checkbox" name="language[]" class="checkbox" value="english">English
 
                         </div>
+                        
+                        <div class="form-group"></div>
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
@@ -435,30 +444,34 @@
 
                         <div class="form-group">
                             <label for="joining_date">Date of joining</label>
-                            <input class="form-control" name='joining_date' id="joining_date" type="date">
+                            <input class="form-control" name='joining_date' id="joining_date" value="10/24/1984">
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Employee id</label>
+                            <label for="employee_id">Employee id</label>
+                            <input class="form-control" name='employee_id' id="employee_id" type="text">
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Department</label>
+                            <label for="department">Department</label>
+                            <input class="form-control" name='department' id="department" type="text">
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Designation</label>
+                            <label for="designation">Designation</label>
+                              <input class="form-control" name='designation' id="designation" type="text">
 
                         </div>
 
                         <div class="form-group">
-                            <label for="profile">Job Profile</label>
-                            <input class="form-control" name='profile' id="profile" type="text"
+                            <label for="job_profile">Job Profile</label>
+                            <input class="form-control" name='job_profile' id="job_profile" type="text"
                                 placeholder="name of person">
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Role</label>
+                            <label for="employee_role">Role</label>
+                            <input class="form-control" name='employee_role' id="employee_role" type="text">
 
                         </div>
 
@@ -600,6 +613,8 @@
 
                             </div>
 
+                            <div class="form-group"></div>
+
                             <div class="form-group">
                                 <a class="attachment_add_more"><i class="icon-plus"></i>add more</a>
                             </div>
@@ -649,4 +664,5 @@
 <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
 
-@endsection
+
+@endsection 

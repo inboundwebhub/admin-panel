@@ -10,6 +10,7 @@ use App\Models\ProfileCurrentContact;
 use App\Models\ProfilePermanentContact;
 use App\Models\ProfileEmergencyContact;
 use App\Models\ProfileQualificationDetails;
+use App\Models\ProfileCompanyDetails;
 use App\Models\ProfileWorkExperiance;
 use App\Models\ProfileBankDetail;
 use App\Models\ProfileFileDetail;
@@ -277,6 +278,43 @@ class ProfileController extends Controller
           
     }
 
+     public function insert_company_details(Request $request)
+     {
+        $id = $request->session()->get('id7');
+        echo $id;
+        echo "heelo";
+        if(empty($id))
+        {    echo "hello world";
+            $data = new ProfileCompanyDetails;            
+            $data->Date_of_joining =  $request->joining_date; 
+            $data->Employee_id =  $request->employee_id; 
+            $data->Department =  $request->department; 
+            $data->Designation =  $request->designation; 
+            $data->Job_Profile =  $request->job_profile; 
+            $data->Role =  $request->employee_role; 
+                   
+            $data->save();
+            $id =  $data->id;
+            $request->session()->put('id7', $id);  
+        //     array_push($array,$id);
+        //    print_r($array);
+        }
+                      
+        if(!empty($id))
+        {   
+
+            $data = ProfileCompanyDetails::find($id);
+            $data->Date_of_joining =  $request->joining_date; 
+            $data->Employee_id =  $request->employee_id; 
+            $data->Department =  $request->department; 
+            $data->Designation =  $request->designation; 
+            $data->Job_Profile =  $request->job_profile; 
+            $data->Role =  $request->employee_role; 
+
+            $data->save();
+        }
+           
+     }  
 
     public function insert_work_experiance(Request $request)
     {   
@@ -351,8 +389,7 @@ class ProfileController extends Controller
 
 
     public function insert_file_details(Request $request)
-    {  
-     
+    {    
            
         $id = $request->session()->get('id10');
         echo $id;

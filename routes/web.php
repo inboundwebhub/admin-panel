@@ -136,6 +136,8 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::post('/profile/insert_emergency_contact_details',     'ProfileController@insert_emergency_contact_details');
 
             Route::post('/profile/insert_qualification_details',     'ProfileController@insert_qualification_details');
+            
+            Route::post('/profile/insert_company_details',     'ProfileController@insert_company_details');
 
             Route::post('/profile/insert_work_experiance',     'ProfileController@insert_work_experiance');
 
