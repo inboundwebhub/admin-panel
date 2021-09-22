@@ -144,7 +144,14 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::post('/profile/insert_file_details',     'ProfileController@insert_file_details');
             
            
-    
-   
+        
+         Route::get('/newmodule',function(){
+             return view('createmodule');
+         });
+
+
+
+         Route::post('/moduleC', 'ModuleController@create_mod');
+         Route::get('/modules','ModuleController@read_modules');
         });
     });
