@@ -29,6 +29,8 @@
                                     <span class="input-group-text">@</span>
                                 </div>
                                 <input class="form-control" type="text" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ $user->email }}" required>
+
+                                <input class="form-control" type="text" name="menuroles" value="{{ $user->menuroles }}" required>
                             </div>
                             <button class="btn btn-block btn-success" type="submit">{{ __('Save') }}</button>
                             <a href="{{ route('users.index') }}" class="btn btn-block btn-primary">{{ __('Return') }}</a> 

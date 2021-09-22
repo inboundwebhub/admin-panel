@@ -17,7 +17,7 @@ class CreateProfileFileDetails extends Migration
             $table->id();
             $table->string('profile_pic');
             $table->string('attach_file');
-            $table->
+            //$table->
             $table->timestamps();
         });
     }
