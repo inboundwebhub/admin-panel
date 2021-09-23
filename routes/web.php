@@ -119,11 +119,7 @@ Route::group(['middleware' => ['get.menu']], function () {
         });
 
 
-            Route::get('/profile', function(){
-                    
-                return view('dashboard.profile.form');
-
-            });
+            Route::get('/profile',     'ProfileController@profile_form');
 
             Route::post('/profile/insert_personal_details',     'ProfileController@insert_personal_details');
 

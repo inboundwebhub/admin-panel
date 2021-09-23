@@ -2,15 +2,13 @@
 
 
 
-@section('css') 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg=="
-    crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"
-    integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg=="
-    crossorigin="anonymous" />
+@section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css" integrity="sha512-xmGTNt20S0t62wHLmQec2DauG9T+owP9e6VU8GigI0anN7OXLip9i7IwEhelasml2osdxX71XcYm6BQunTQeQg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="{{URL::asset('css/profile.css')}}">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
 @endsection
 
@@ -21,26 +19,16 @@
 <div class="col-md-6 mb-4">
     <div class="nav-tabs-boxed">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home" role="tab"
-                    aria-controls="messages">1</a></li>
-            <li class="nav-item"><a class="nav-link" id="profile_tab" data-toggle="tab" href="#profile" role="tab"
-                    aria-controls="messages">2</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab"
-                    aria-controls="messages">3</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#permanent_details" role="tab"
-                    aria-controls="messages">4</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emergency_details" role="tab"
-                    aria-controls="messages">5</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#qualification_details" role="tab"
-                    aria-controls="messages">6</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#company_details" role="tab"
-                    aria-controls="messages">7</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#work_experience" role="tab"
-                    aria-controls="messages">8</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#bank_detail" role="tab"
-                    aria-controls="messages">9</a></li>
-            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#attachment" role="tab"
-                    aria-controls="messages">10</a></li>
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="messages">1</a></li>
+            <li class="nav-item"><a class="nav-link" id="profile_tab" data-toggle="tab" href="#profile" role="tab" aria-controls="messages">2</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">3</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#permanent_details" role="tab" aria-controls="messages">4</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#emergency_details" role="tab" aria-controls="messages">5</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#qualification_details" role="tab" aria-controls="messages">6</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#company_details" role="tab" aria-controls="messages">7</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#work_experience" role="tab" aria-controls="messages">8</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#bank_detail" role="tab" aria-controls="messages">9</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#attachment" role="tab" aria-controls="messages">10</a></li>
 
         </ul>
         <div class="tab-content">
@@ -48,39 +36,34 @@
 
                 <form id="form1" name="form1">
                     <!--  personal detail form [1]   -->
-                   
+
                     <div class="card">
                         <div class="card-header"><strong>Personal Detail</strong> </div>
 
                         <div class="form-group">
                             <label for="f_name">First name</label>
-                            <input class="form-control" name='f_name' id="f_name" type="text"
-                                placeholder="Enter your first name">
+                            <input class="form-control" name='f_name' id="f_name" type="text" placeholder="Enter your first name">
                         </div>
 
                         <div class="form-group">
                             <label for="m_name">Middle name</label>
-                            <input class="form-control" name='m_name' id="m_name" type="text"
-                                placeholder="Enter your middle name">
+                            <input class="form-control" name='m_name' id="m_name" type="text" placeholder="Enter your middle name">
                         </div>
 
                         <div class="form-group">
                             <label for="l_name">Last name</label>
-                            <input class="form-control" name='l_name' id="l_name" type="text"
-                                placeholder="Enter your first name">
+                            <input class="form-control" name='l_name' id="l_name" type="text" placeholder="Enter your first name">
                         </div>
 
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="col-md-9 col-form-label">
                                 <div class="form-check form-check-inline mr-1">
-                                    <input class="form-check-input" id="inline-radio1" type="radio" value="male"
-                                        name="gender">
+                                    <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender">
                                     <label class="form-check-label" for="inline-radio1">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline mr-1">
-                                    <input class="form-check-input" id="inline-radio2" type="radio" value="female"
-                                        name="gender">
+                                    <input class="form-check-input" id="inline-radio2" type="radio" value="female" name="gender">
                                     <label class="form-check-label" for="inline-radio2">Female</label>
                                 </div>
                             </div>
@@ -88,36 +71,31 @@
 
                         <div class="form-group">
                             <label for="email">Emailid</label>
-                            <input class="form-control" name='email' id="email" type="text"
-                                placeholder="Enter your email id">
+                            <input class="form-control" name='email' id="email" type="text" placeholder="Enter your email id">
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control validate[required,minSize[8]]" name='password' id="password" type="password"
-                                placeholder="Enter your password">
+                            <input class="form-control validate[required,minSize[8]]" name='password' id="password" type="password" placeholder="Enter your password">
                         </div>
 
                         <div class="form-group">
                             <label for="profile_pic">Profile picture</label>
                             <div class="controls">
                                 <img src="http://hrms.abhicenation.com/uploads/system_users/thumb/me.jpg">
-                            
-                                <input type="file" name="profile_pic" id="profile_pic"
-                                    class="input-xlarge ui-wizard-content ">
+
+                                <input type="file" name="profile_pic" id="profile_pic" class="input-xlarge ui-wizard-content ">
                             </div>
 
-                            <div> </div>
-                        
+                            <div class="error"> </div>
+
                         </div>
 
 
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back1">
-                            <input type="button" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next1">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back1">
+                            <input type="button" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next1">
                         </div>
 
                     </div>
@@ -129,7 +107,7 @@
             <div class="tab-pane" id="profile" role="tabpanel">
 
                 <form id="form2">
-                  
+
                     <!-- General information form [2]   -->
                     <div class="card">
                         <div class="card-header"><strong>General information</strong></div>
@@ -166,15 +144,12 @@
 
                         <div class="form-group">
                             <label for="bio">Bio</label>
-                            <textarea class="form-control" name='bio' id="bio" rows="4" cols="50"
-                                placeholder="About yourself..."></textarea>
+                            <textarea class="form-control" name='bio' id="bio" rows="4" cols="50" placeholder="About yourself..."></textarea>
                         </div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back2">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next2">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back2">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next2">
                         </div>
 
                     </div>
@@ -185,15 +160,14 @@
             <div class="tab-pane" id="messages" role="tabpanel">
 
                 <form id="form3">
-                  
+
                     <!--Contact details current form [3]    -->
                     <div class="card">
                         <div class="card-header"><strong>Contact Details (current)</strong></div>
 
                         <div class="form-group">
                             <label for="c_address">Current Address</label>
-                            <textarea class="form-control" name='c_address' id="c_address" rows="4" cols="50"
-                                placeholder="provide your current address information here..."></textarea>
+                            <textarea class="form-control" name='c_address' id="c_address" rows="4" cols="50" placeholder="provide your current address information here..."></textarea>
                         </div>
 
                         <div class="form-group">
@@ -213,14 +187,12 @@
 
                         <div class="form-group">
                             <label for="c_number">Personal Contact number</label>
-                            <input class="form-control" name='c_number' id="c_number" type="text"
-                                placeholder="personal number">
+                            <input class="form-control" name='c_number' id="c_number" type="text" placeholder="personal number">
                         </div>
 
                         <div class="form-group">
                             <label for="l_numbe">Local Contact number</label>
-                            <input class="form-control" name='l_number' id="l_numbe" type="text"
-                                placeholder="local contact number  ">
+                            <input class="form-control" name='l_number' id="l_numbe" type="text" placeholder="local contact number  ">
                         </div>
 
                         <div class="form-group">
@@ -229,10 +201,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back3">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next3">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back3">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next3">
                         </div>
 
 
@@ -250,8 +220,7 @@
 
                         <div class="form-group">
                             <label for="p_address">Permanent Address</label>
-                            <textarea class="form-control" name='p_address' id="p_address" rows="4" cols="50"
-                                placeholder="provide your permanent address information here..."></textarea>
+                            <textarea class="form-control" name='p_address' id="p_address" rows="4" cols="50" placeholder="provide your permanent address information here..."></textarea>
                         </div>
 
                         <div class="form-group">
@@ -271,14 +240,12 @@
 
                         <div class="form-group">
                             <label for="p_number1">Parents Contact number1</label>
-                            <input class="form-control" name='p_number1' id="p_number1" type="text"
-                                placeholder="personal number">
+                            <input class="form-control" name='p_number1' id="p_number1" type="text" placeholder="personal number">
                         </div>
 
                         <div class="form-group">
                             <label for="p_number2">Parents Contact number2</label>
-                            <input class="form-control" name='p_number2' id="p_number2" type="text"
-                                placeholder="local contact number  ">
+                            <input class="form-control" name='p_number2' id="p_number2" type="text" placeholder="local contact number  ">
                         </div>
 
                         <div class="form-group">
@@ -292,10 +259,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back4">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next4">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back4">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next4">
                         </div>
 
                     </div>
@@ -318,14 +283,12 @@
 
                         <div class="form-group">
                             <label for="relation">Relation</label>
-                            <input class="form-control" name='relation' id="relation" type="text"
-                                placeholder="relation with person">
+                            <input class="form-control" name='relation' id="relation" type="text" placeholder="relation with person">
                         </div>
 
                         <div class="form-group">
                             <label for="number">Contact number</label>
-                            <input class="form-control" name='number' id="number" type="text"
-                                placeholder="contact number">
+                            <input class="form-control" name='number' id="number" type="text" placeholder="contact number">
                         </div>
 
                         <div class="form-group">
@@ -334,10 +297,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back5">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next5">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back5">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next5">
                         </div>
 
                     </div>
@@ -362,34 +323,32 @@
                                     <option class="form-control" name='education[]' id="12th" value='12th'>12th</option>
                                     <option class="form-control" name='education[]' id="deploma" value='deploma'>Deploma
                                     </option>
-                                    <option class="form-control" name='education[]' id="graduation" value='graduation'
-                                        selected>Graduation</option>
-                                    <option class="form-control" name='education[]' id="post_graduation"
-                                        value='post_graduation'>Post Graduation</option>
+                                    <option class="form-control" name='education[]' id="graduation" value='graduation' selected>Graduation</option>
+                                    <option class="form-control" name='education[]' id="post_graduation" value='post_graduation'>Post Graduation</option>
 
                                 </select>
                             </div>
-                           
+
                             <div></div>
 
                             <div class="form-group">
                                 <label for="degree">Degree</label>
-                                <input class="form-control" name='degree[]' id="degree" type="text">
+                                <input class="form-control degree" name='degree[]' id="degree" type="text">
                             </div>
 
                             <div class="form-group">
                                 <label for="university">University</label>
-                                <input class="form-control" name='university[]' id="university" type="text">
+                                <input class="form-control university" name='university[]' id="university" type="text">
                             </div>
 
                             <div class="form-group">
                                 <label for="passing_year">Passing_year</label>
-                                <input class="form-control" name='passing_year[]' id="passing_year" type="text">
+                                <input class="form-control passing_year" name='passing_year[]' id="passing_year" type="text">
                             </div>
 
                             <div class="form-group">
                                 <label for="grade">Grade</label>
-                                <input class="form-control" name='grade[]' id="grade" type="text">
+                                <input class="form-control grade" name='grade[]' id="grade" type="text">
                             </div>
 
 
@@ -409,7 +368,7 @@
 
                         </div>
 
-                        <div class="form-group"></div>
+                        <div class="form-group error"></div>
 
                         <div class="form-group">
                             <label for="">Known language</label>
@@ -418,14 +377,12 @@
                             <input type="checkbox" name="language[]" class="checkbox" value="english">English
 
                         </div>
-                        
-                        <div class="form-group"></div>
+
+                        <div class="form-group error"></div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back6">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next6">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back6">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next6">
                         </div>
 
 
@@ -459,14 +416,13 @@
 
                         <div class="form-group">
                             <label for="designation">Designation</label>
-                              <input class="form-control" name='designation' id="designation" type="text">
+                            <input class="form-control" name='designation' id="designation" type="text">
 
                         </div>
 
                         <div class="form-group">
                             <label for="job_profile">Job Profile</label>
-                            <input class="form-control" name='job_profile' id="job_profile" type="text"
-                                placeholder="name of person">
+                            <input class="form-control" name='job_profile' id="job_profile" type="text" placeholder="name of person">
                         </div>
 
                         <div class="form-group">
@@ -476,10 +432,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back7">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next7">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back7">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next7">
                         </div>
 
                     </div>
@@ -503,21 +457,17 @@
 
                             <div class="form-group">
                                 <label for="c_name">Company Name</label>
-                                <input class="form-control" name='c_name[]' id="c_name" type="text"
-                                    placeholder="previous company name">
+                                <input class="form-control" name='c_name[]' id="c_name" type="text" placeholder="previous company name">
                             </div>
 
                             <div class="form-group">
                                 <label for="company_number">Company Number</label>
-                                <input class="form-control" name="company_number[]" id="company_number" type="text"
-                                    placeholder="previous company number">
+                                <input class="form-control" name="company_number[]" id="company_number" type="text" placeholder="previous company number">
                             </div>
 
                             <div class="form-group">
                                 <label for="company_address">Company Address</label>
-                                <textarea class="form-control company_address" name='company_address[]'
-                                    id="company_address" rows="4" cols="50"
-                                    placeholder="provide your previous company address information here..."></textarea>
+                                <textarea class="form-control company_address" name='company_address[]' id="company_address" rows="4" cols="50" placeholder="provide your previous company address information here..."></textarea>
                             </div>
 
                         </div>
@@ -531,10 +481,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back8">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next8">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back8">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next8">
                         </div>
 
                     </div>
@@ -565,10 +513,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back9">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Next" id="next9">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back9">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next9">
                         </div>
 
                     </div>
@@ -622,10 +568,8 @@
 
 
                         <div class="form-actions">
-                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back"
-                                id="back10">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button"
-                                value="Submit" id="next10">
+                            <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back10">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Submit" id="next10">
                         </div>
 
                     </div>
@@ -646,11 +590,9 @@
 @section('javascript')
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"
-    integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g=="
-    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous"></script>
 
-    <!-- jquery validation plugin -->
+<!-- jquery validation plugin -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
 
@@ -659,10 +601,10 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<script src="{{URL::asset('js/profile.js')}}"></script> 
+<script src="{{URL::asset('js/profile.js')}}"></script>
 
 <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-
-@endsection 
+@endsection

@@ -18,6 +18,7 @@ class CreateProfileBankDetail extends Migration
             $table->string('Bank_Name');
             $table->string('Branch_Name');
             $table->bigInteger('Account_number');  
+            $table->foreignIdFor(User::class);
             $table->timestamps();
         });
     }
