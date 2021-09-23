@@ -15,6 +15,12 @@ class PermissionController extends Controller
         $pm->create_permission($permission_name,$permission_description);
         
     }
+    public function Read_permissions(){
+        $pm = new PermModel();
+        $permissions = $pm::All();
+
+        return view('permissions',compact('permissions'));
+    }
    
     
 }

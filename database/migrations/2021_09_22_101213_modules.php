@@ -19,7 +19,7 @@ class Modules extends Migration
             $table->string('module_description');
             $table->enum('Activate_Deactivate',['Activate','Deactivate'])->default('Activate');
             $table->enum('isGeneralModule',['True','False'])->default('False');
-            $table->string('permission_id')->references('id')->on('permission');
+            $table->enum('AssignedtoRole',['admin','user','guest'])->default('user');
             // $table->timestamps();
         });
     }

@@ -25,6 +25,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('admin',function($user){
+           
+            return $user->menuroles == 'user,admin';
+          });
+
+          Gate::define('user',function($user){
+         
+            return $user->menuroles == 'user';
+          });
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\ModuleModel;
 class MenusTableSeeder extends Seeder
 {
     private $menuId = null;
@@ -144,6 +144,8 @@ class MenusTableSeeder extends Seeder
             $this->insertLink('admin', 'Media',                   '/media');
             $this->insertLink('admin', 'BREAD',                   '/bread');
             $this->insertLink('admin', 'Email',                   '/mail');
+            $this->insertLink('user,admin', 'Modules',        '/modules');
+            $this->insertLink('user,admin','Permissions',      '/permissions');
         $this->endDropdown();
         $this->insertLink('guest', 'Login', '/login', 'cil-account-logout');
         $this->insertLink('guest', 'Register', '/register', 'cil-account-logout');
@@ -167,7 +169,7 @@ class MenusTableSeeder extends Seeder
             $this->insertLink('user,admin', 'Tables',        '/base/tables');
             $this->insertLink('user,admin', 'Tabs',          '/base/tabs');
             $this->insertLink('user,admin', 'Tooltips',      '/base/tooltips');
-            $this->insertLink('user,admin', 'Modules',        '/modules');
+            
         $this->endDropdown();
             $this->beginDropdown('user,admin', 'Buttons', 'cil-cursor');
             $this->insertLink('user,admin', 'Buttons',           '/buttons/buttons');
@@ -196,7 +198,12 @@ class MenusTableSeeder extends Seeder
         $this->endDropdown();
         $this->insertLink('guest,user,admin', 'Download CoreUI', 'https://coreui.io', 'cil-cloud-download');
         $this->insertLink('guest,user,admin', 'Try CoreUI PRO', 'https://coreui.io/pro/', 'cil-layers');
-
+        $this->insertTitle('user,admin', 'Modules');
+        // $module = new ModuleModel();
+        // foreach($module as $m){
+        //     $this->insertLink($m->AssignedtoRole,$m->module_name,'/modules'.'/'.$m->id); 
+        // }
+        
 
         /* Create top menu */
         DB::table('menulist')->insert([

@@ -152,6 +152,22 @@ Route::group(['middleware' => ['get.menu']], function () {
 
 
          Route::post('/moduleC', 'ModuleController@create_mod');
+        //  Route::post('/moduleC', 'ModuleController@populate_permissions_table');
          Route::get('/modules','ModuleController@read_modules');
+         Route::get('/newmodule','ModuleController@populate_roles');
+         Route::get('/modules/{id}','ModuleController@read_modules_by_id');
+
+        Route::get('/newpermission',function(){
+            return view('createpermission');
+        });
+
+         Route::post('/permissionC','PermissionController@create_perm');
+         Route::get('/permissions','PermissionController@Read_permissions');
+        //  Route::get('/newmodule','ModuleController@populate_permissions');
+        
+         Route::get('/viewPermissions','ModuleController@viewPermissions');
+
+
+
         });
     });

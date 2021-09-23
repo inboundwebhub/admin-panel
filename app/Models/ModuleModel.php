@@ -10,14 +10,15 @@ class ModuleModel extends Model
     protected $table = 'modules';
     public $timestamps = false;
     protected $fillable = [
-        'module_name', 'module_description', 'Activate_Deactivate', 'isGeneralModule', 
+        'module_name', 'module_description', 'Activate_Deactivate', 'isGeneralModule', 'AssignedtoRole'
     ];
 
-    public function create_module($module_name,$module_description,$selected_option,$isGeneral){
+    public function create_module($module_name,$module_description,$selected_option,$isGeneral,$AssignedtoRole){
         $this->module_name = $module_name;
         $this->module_description = $module_description;
         $this->Activate_Deactivate = $selected_option;
         $this->isGeneralModule = $isGeneral;
+        $this->AssignedtoRole = $AssignedtoRole; 
         $this->save();
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Permissions extends Migration
+class PermissionModule extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class Permissions extends Migration
      */
     public function up()
     {
-        Schema::create('permission',function(Blueprint $table){
-             $table->bigIncrements('id');
-             $table->string('Permission_name');
-             $table->string('Permission_description');
-            //  $table->timestamp('created at')->nullable();
-             $table->timestamps();
+        Schema::create('permissions_module',function(Blueprint $table){
+           $table->id();
+           $table->string('allowed_permissions');
+           $table->bigInteger('module_id')->unsigned()->index()->nullable();
+           $table->foreign('module_id')->references('id')->on('modules');
 
         });
+
     }
 
     /**
