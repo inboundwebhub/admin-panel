@@ -68,5 +68,13 @@ class ModuleController extends Controller
         //  dd($permissions);
          return view('viewPermissions',compact('permissions'));
     }
+
+    public function edit_module_by_id($id){
+        $mm = new ModuleModel();
+        $module_info = $mm::find($id);
+
+        return view('moduleSingleEdit',compact('module_info'));
+
+    }
    
 }

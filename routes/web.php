@@ -156,6 +156,7 @@ Route::group(['middleware' => ['get.menu']], function () {
          Route::get('/modules','ModuleController@read_modules');
          Route::get('/newmodule','ModuleController@populate_roles');
          Route::get('/modules/{id}','ModuleController@read_modules_by_id');
+         Route::get('/module/{id}/edit','ModuleController@edit_module_by_id');
 
         Route::get('/newpermission',function(){
             return view('createpermission');
