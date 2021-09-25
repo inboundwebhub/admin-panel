@@ -582,7 +582,21 @@
     </div>
 </div>
 
+<!-- @php
+    $url_id = '';
+@endphp
 
+@if( collect(request()->segments())->last() == '')
+    @php
+        $url_id = 1
+    @endphp
+@else
+    @php    
+        $url_id = 2
+    @endphp
+@endif -->
+
+<input type="text" id="url_id" value="{{ collect(request()->segments())->last() }}" hidden>
 
 
 @endsection

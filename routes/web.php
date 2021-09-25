@@ -119,7 +119,13 @@ Route::group(['middleware' => ['get.menu']], function () {
         });
 
 
-            Route::get('/profile',     'ProfileController@profile_form');
+            Route::get('/profile/insert',     'ProfileController@profile_form');
+
+            Route::get('/profile/insert/{id}',     'ProfileController@profile_form');
+
+            Route::get('/profile/view',     'ProfileViewController@profile_form');
+
+         //   Route::get('/profile/{id}/edit',     'ProfileViewController@profile_edit');
 
             Route::post('/profile/insert_personal_details',     'ProfileController@insert_personal_details');
 

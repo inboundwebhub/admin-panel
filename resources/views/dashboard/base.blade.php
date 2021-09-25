@@ -63,8 +63,8 @@
 
 
   <body class="c-app">
-
-      <!-- @if(URL::previous() == 'http://127.0.0.1:8000/profile')
+ 
+  <!-- @if(URL::previous() == 'http://127.0.0.1:8000/profile')
        
         @php
             Session::forget('id1');
