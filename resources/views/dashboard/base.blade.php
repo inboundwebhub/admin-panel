@@ -63,6 +63,24 @@
 
 
   <body class="c-app">
+
+      <!-- @if(URL::previous() == 'http://127.0.0.1:8000/profile')
+       
+        @php
+            Session::forget('id1');
+            Session::forget('id2');
+            Session::forget('id3');
+            Session::forget('id4');
+            Session::forget('id5');
+            Session::forget('id6');
+            Session::forget('id7');
+            Session::forget('id8');
+            Session::forget('id9');
+            Session::forget('id10');
+        @endphp
+
+      @endif  -->
+
     <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
 
       @include('dashboard.shared.nav-builder')
@@ -77,6 +95,7 @@
 
         </main>
         @include('dashboard.shared.footer')
+      
       </div>
     </div>
 
@@ -87,10 +106,21 @@
     <script src="{{ asset('js/coreui-utils.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
     
-    
+    <script>
+
+        if(document.referrer.indexOf(window.location.hostname) != -1){
+          var referrer =  document.referrer;
+         
+          console.log(referrer)
+         // alert("")
+        }
+       // sessionStorage.removeItem('id1'); 
+        console.log()
+    </script>
     @yield('javascript')
 
-
+        {{session('id1')}}
 
   </body>
 </html>
+     

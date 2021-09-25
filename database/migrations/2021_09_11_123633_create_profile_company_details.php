@@ -21,6 +21,9 @@ class CreateProfileCompanyDetails extends Migration
             $table->string('Designation');
             $table->string('Job_Profile');
             $table->string('Role');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
+           
             $table->timestamps();
         });
     }

@@ -18,10 +18,13 @@ class CreateProfileQualificationDetails extends Migration
             $table->string('Education_Detail');
             $table->string('Degree');
             $table->string('University');
-            $table->bigInteger('Passing_year');
+            $table->string('Passing_year', 200);
             $table->string('Grade');
             $table->string('Skills');
             $table->string('Known_language');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');                         
+
             $table->timestamps();
         });
     }

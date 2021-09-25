@@ -23,6 +23,9 @@ class CreateProfilePermanentContactDetails extends Migration
             $table->bigInteger('Parents_Contact_number2');
             $table->string('Personal_Emailid');
             $table->string('Personal_Skypeid');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

@@ -14,13 +14,13 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-        Session::forget('id1'); 
-        print_r('kaloda');
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     Session::forget('id1'); 
+    //     print_r('kaloda');
 
-    }
+    // }
 
     /**
      * Show the users list.

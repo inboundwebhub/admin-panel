@@ -18,7 +18,9 @@ class CreateProfileBankDetail extends Migration
             $table->string('Bank_Name');
             $table->string('Branch_Name');
             $table->bigInteger('Account_number');  
-            $table->foreignIdFor(User::class);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

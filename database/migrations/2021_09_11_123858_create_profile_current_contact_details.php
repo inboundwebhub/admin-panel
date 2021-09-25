@@ -22,6 +22,9 @@ class CreateProfileCurrentContactDetails extends Migration
             $table->bigInteger('Personal_Contact_number');
             $table->bigInteger('Local_Contact_number');
             $table->string('Company_Skypeid');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

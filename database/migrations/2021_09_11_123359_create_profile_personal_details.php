@@ -21,7 +21,9 @@ class CreateProfilePersonalDetails extends Migration
             $table->string('gender');
             $table->string('emailid');
             $table->string('password');
+          
             $table->timestamps();
+           
         });
     }
 

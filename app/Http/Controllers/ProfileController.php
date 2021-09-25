@@ -27,10 +27,24 @@ class ProfileController extends Controller
 
     public function insert_personal_details(Request $request)
     {
+       session()->forget('id1');
+       session()->forget('id2');
+       session()->forget('id3');
+       session()->forget('id4');
+       session()->forget('id5');
+       session()->forget('id6');
+       session()->forget('id7');
+       session()->forget('id8');
+       session()->forget('id9');
+       session()->forget('id10');
 
         $id = $request->session()->get('id1');
-       
-        if (empty($id)) {       
+       echo $id;
+    
+        $data = ProfilePersonalDetails::Where('id', $id)->get();
+                  
+        if (empty($id) || count($data) == 0) {     
+            echo "helo";  
             $data = new ProfilePersonalDetails;
             $data->first_name =  $request->f_name;
             $data->middle_name =  $request->m_name;
@@ -38,7 +52,7 @@ class ProfileController extends Controller
             $data->gender =  $request->gender;
             $data->emailid =  $request->email;
             $data->password =  $request->password;
-
+         
             $data->save();
             $id =  $data->id;
             $request->session()->put('id1', $id);
@@ -46,7 +60,7 @@ class ProfileController extends Controller
 
 
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
             $data = ProfilePersonalDetails::find($id);
             $data->first_name =  $request->f_name;
             $data->middle_name =  $request->m_name;
@@ -54,19 +68,21 @@ class ProfileController extends Controller
             $data->gender =  $request->gender;
             $data->emailid =  $request->email;
             $data->password =  $request->password;
-
+           
             $data->save();
         }
     }
 
     public function insert_general_details(Request $request)
     {
-
+        
         $id = $request->session()->get('id2');
         echo $id;
-        echo $_SERVER['PHP_SELF'];
+     
+        
+        $data = ProfileGeneralInformation::Where('id', $id)->get();
 
-        if (empty($id)) {
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfileGeneralInformation;
 
@@ -76,7 +92,7 @@ class ProfileController extends Controller
             $data->Driving_License_number =  $request->dl_number;
             $data->Passport_number =  $request->pass_num;
             $data->Bio =  $request->bio;
-
+            $data->user_id =  $request->session()->get('id1');
             $data->save();
             $id = $data->id;
             $request->session()->put('id2', $id);
@@ -84,7 +100,7 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfileGeneralInformation::find($id);
             $data->Date_of_birth =  $request->b_date;
@@ -93,6 +109,7 @@ class ProfileController extends Controller
             $data->Driving_License_number =  $request->dl_number;
             $data->Passport_number =  $request->pass_num;
             $data->Bio =  $request->bio;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
         }
@@ -107,8 +124,10 @@ class ProfileController extends Controller
 
         $id = $request->session()->get('id3');
         echo $id;
+        
+        $data = ProfileCurrentContact::Where('id', $id)->get();
 
-        if (empty($id)) {
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfileCurrentContact;
 
@@ -119,6 +138,7 @@ class ProfileController extends Controller
             $data->Personal_Contact_number =  $request->c_number;
             $data->Local_Contact_number =  $request->l_numbe;
             $data->Company_Skypeid =  $request->skypeid;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
             $id = $data->id;
@@ -127,7 +147,7 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfileCurrentContact::find($id);
             $data->Current_Address =  $request->c_address;
@@ -137,6 +157,7 @@ class ProfileController extends Controller
             $data->Personal_Contact_number =  $request->c_number;
             $data->Local_Contact_number =  $request->l_numbe;
             $data->Company_Skypeid =  $request->skypeid;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
         }
@@ -148,8 +169,10 @@ class ProfileController extends Controller
 
         $id = $request->session()->get('id4');
         echo $id;
+        
+        $data = ProfilePermanentContact::Where('id', $id)->get();
 
-        if (empty($id)) {
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfilePermanentContact;
 
@@ -161,6 +184,7 @@ class ProfileController extends Controller
             $data->Parents_Contact_number2 =  $request->p_number2;
             $data->Personal_Emailid =  $request->p_emailid;
             $data->Personal_Skypeid =  $request->p_skypeid;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
             $id = $data->id;
@@ -169,7 +193,7 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfilePermanentContact::find($id);
             $data->Permanent_Address =  $request->p_address;
@@ -191,8 +215,10 @@ class ProfileController extends Controller
 
         $id = $request->session()->get('id5');
         echo $id;
+        
+        $data = ProfileEmergencyContact::Where('id', $id)->get();
 
-        if (empty($id)) {
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfileEmergencyContact;
 
@@ -200,7 +226,7 @@ class ProfileController extends Controller
             $data->Relation =  $request->relation;
             $data->Contact_number =  $request->number;
             $data->Address =  $request->address;
-
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
             $id = $data->id;
@@ -209,14 +235,14 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfileEmergencyContact::find($id);
             $data->Name =  $request->name;
             $data->Relation =  $request->relation;
             $data->Contact_number =  $request->number;
             $data->Address =  $request->address;
-
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
         }
@@ -229,8 +255,10 @@ class ProfileController extends Controller
 
         $id = $request->session()->get('id6');
         echo $id;
+        
+        $data = ProfileQualificationDetails::Where('id', $id)->get();
 
-        if (empty($id)) {
+        if (empty($id) ||count($data)== 0) {
             echo "hello world";
             $data = new ProfileQualificationDetails;
 
@@ -241,6 +269,7 @@ class ProfileController extends Controller
             $data->Grade =  $request->grade;
             $data->Skills =  $request->tags;
             $data->Known_language =  $request->language;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
             $id = $data->id;
@@ -249,7 +278,7 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfileQualificationDetails::find($id);
             $data->Education_Detail =  $request->select;
@@ -259,6 +288,7 @@ class ProfileController extends Controller
             $data->Grade =  $request->grade;
             $data->Skills =  $request->tags;
             $data->Known_language =  $request->language;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
         }
@@ -269,7 +299,10 @@ class ProfileController extends Controller
         $id = $request->session()->get('id7');
         echo $id;
         echo "heelo";
-        if (empty($id)) {
+        
+        $data = ProfileCompanyDetails::Where('id', $id)->get();
+
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfileCompanyDetails;
             $data->Date_of_joining =  $request->joining_date;
@@ -278,6 +311,7 @@ class ProfileController extends Controller
             $data->Designation =  $request->designation;
             $data->Job_Profile =  $request->job_profile;
             $data->Role =  $request->employee_role;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
             $id =  $data->id;
@@ -286,7 +320,7 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfileCompanyDetails::find($id);
             $data->Date_of_joining =  $request->joining_date;
@@ -295,6 +329,7 @@ class ProfileController extends Controller
             $data->Designation =  $request->designation;
             $data->Job_Profile =  $request->job_profile;
             $data->Role =  $request->employee_role;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
         }
@@ -306,13 +341,16 @@ class ProfileController extends Controller
         $id = $request->session()->get('id8');
         echo $id;
 
-        if (empty($id)) {
+        $data = ProfileWorkExperiance::Where('id', $id)->get();
+
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfileWorkExperiance;
             $data->Duration =  $request->duration;
             $data->Company_Name =  $request->c_name;
             $data->Company_Number =  $request->c_number;
             $data->Company_Address =  $request->c_address;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
             $id =  $data->id;
@@ -321,13 +359,14 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfileWorkExperiance::find($id);
             $data->Duration =  $request->duration;
             $data->Company_Name =  $request->c_name;
             $data->Company_Number =  $request->c_number;
             $data->Company_Address =  $request->c_address;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
         }
@@ -342,13 +381,14 @@ class ProfileController extends Controller
 
         $data = ProfileBankDetail::Where('id', $id)->get();
 
-        $data = count($data);
-        if (empty($id) || $data == 0) {
+  
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfileBankDetail;
             $data->Bank_Name =  $request->bank_name;
             $data->Branch_Name =  $request->branch_name;
             $data->Account_number =  $request->account_number;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
             $id =  $data->id;
@@ -363,6 +403,7 @@ class ProfileController extends Controller
             $data->Bank_Name =  $request->bank_name;
             $data->Branch_Name =  $request->branch_name;
             $data->Account_number =  $request->account_number;
+            $data->user_id =  $request->session()->get('id1');
 
             $data->save();
         }
@@ -375,7 +416,9 @@ class ProfileController extends Controller
         $id = $request->session()->get('id10');
         echo $id;
 
-        if (empty($id)) {
+        $data = ProfileFileDetail::Where('id', $id)->get();
+
+        if (empty($id) || count($data) == 0) {
             echo "hello world";
             $data = new ProfileFileDetail;
             $data->profile_pic = $request->file('profile_pic')->store('storage/app/public/images');
@@ -387,6 +430,8 @@ class ProfileController extends Controller
             }
             $files = implode(',', $files);
             $data->attach_file = $files;
+            $data->user_id =  $request->session()->get('id1');
+
             $data->save();
             $id = $data->id;
             $request->session()->put('id10', $id);
@@ -394,7 +439,7 @@ class ProfileController extends Controller
             //    print_r($array);
         }
 
-        if (!empty($id)) {
+        if (!empty($id) && !empty($data)) {
 
             $data = ProfileFileDetail::find($id);
             $data->profile_pic = $request->file('profile_pic')->store('storage/app/public/images');
@@ -407,6 +452,8 @@ class ProfileController extends Controller
             }
             $files = implode(',', $files);
             $data->attach_file = $files;
+            $data->user_id =  $request->session()->get('id1');
+
             $data->save();
         }
     }

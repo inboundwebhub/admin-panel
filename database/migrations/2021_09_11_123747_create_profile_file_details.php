@@ -17,7 +17,9 @@ class CreateProfileFileDetails extends Migration
             $table->id();
             $table->string('profile_pic');
             $table->string('attach_file');
-            $table->
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
+           
             $table->timestamps();
         });
     }

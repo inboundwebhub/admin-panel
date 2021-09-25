@@ -452,7 +452,7 @@
 
                             <div class="form-group">
                                 <label for="duration">Duration</label>
-                                <input class="form-control" name='duration[]' id="duration" type="text">
+                                <input class="form-control duration" name='duration[]' id="duration" type="text">
                             </div>
 
                             <div class="form-group">

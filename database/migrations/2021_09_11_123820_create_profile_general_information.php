@@ -21,6 +21,9 @@ class CreateProfileGeneralInformation extends Migration
             $table->string('Driving_License_number');
             $table->string('Passport_number');
             $table->string('Bio');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }
