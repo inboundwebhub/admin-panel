@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use DB;
 class CreateProfileQualificationDetails extends Migration
 {
     /**
@@ -27,6 +27,11 @@ class CreateProfileQualificationDetails extends Migration
 
             $table->timestamps();
         });
+
+        Schema::disableForeignKeyConstraints();
+        DB::table('profile_personal_details')->truncate();
+        DB::table('profile_qualification_details')->truncate();
+        Schema::enableForeignKeyConstraints();
     }
 
     /**

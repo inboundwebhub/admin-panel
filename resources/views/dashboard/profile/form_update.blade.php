@@ -16,6 +16,9 @@
 
 <div id="div1" class="form-group    " style="width:250px;height:30px;display:none;background-color:#90EE90;">data successfully saved.</div>
 
+
+@foreach($data as $row)
+
 <div class="col-md-6 mb-4">
     <div class="nav-tabs-boxed">
         <ul class="nav nav-tabs" role="tablist">
@@ -42,28 +45,54 @@
 
                         <div class="form-group">
                             <label for="f_name">First name</label>
-                            <input class="form-control" name='f_name' id="f_name" type="text" placeholder="Enter your first name">
+                            <input class="form-control" name='f_name' id="f_name" value="{{$row->first_name}}" type="text" placeholder="Enter your first name">
                         </div>
 
                         <div class="form-group">
                             <label for="m_name">Middle name</label>
-                            <input class="form-control" name='m_name' id="m_name" type="text" placeholder="Enter your middle name">
+                            <input class="form-control" name='m_name' id="m_name" value="{{$row->middle_name}}" type="text" placeholder="Enter your middle name">
                         </div>
 
                         <div class="form-group">
                             <label for="l_name">Last name</label>
-                            <input class="form-control" name='l_name' id="l_name" type="text" placeholder="Enter your first name">
+                            <input class="form-control" name='l_name' id="l_name" value="{{$row->last_name}}" type="text" placeholder="Enter your first name">
                         </div>
-
+                        @php
+                            $gender1 = '';
+                            $gender2 = '';
+                        @endphp
+                            @if($row->gender == 'male')
+                                @php
+                                $gender1 = 'checked';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $gender1 = '';
+                                @endphp
+                            @endif
+                            @if($row->gender == 'female')
+                                @php
+                                $gender2 = 'checked';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $gender2 = '';
+                                @endphp
+                            @endif
+                        
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="col-md-9 col-form-label">
                                 <div class="form-check form-check-inline mr-1">
-                                    <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender">
+                                    <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender" {{$gender1}} >
                                     <label class="form-check-label" for="inline-radio1">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline mr-1">
-                                    <input class="form-check-input" id="inline-radio2" type="radio" value="female" name="gender">
+                                    <input class="form-check-input" id="inline-radio2" type="radio" value="female" name="gender" {{$gender2}}>
                                     <label class="form-check-label" for="inline-radio2">Female</label>
                                 </div>
                             </div>
@@ -71,12 +100,12 @@
 
                         <div class="form-group">
                             <label for="email">Emailid</label>
-                            <input class="form-control" name='email' id="email" type="text" placeholder="Enter your email id">
+                            <input class="form-control" name='email' value="{{$row->emailid}}" id="email" type="text" placeholder="Enter your email id">
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input class="form-control validate[required,minSize[8]]" name='password' id="password" type="password" placeholder="Enter your password">
+                            <input class="form-control validate[required,minSize[8]]" name='password' value="{{$row->password}}" id="password" type="password" placeholder="Enter your password">
                         </div>
 
                         <div class="form-group">
@@ -114,37 +143,65 @@
 
                         <div class="form-group">
                             <label for="company">Date of birth</label>
-                            <input class="form-control" name='b_date' id="b_date" type="text">
+                            <input class="form-control" name='b_date' value="{{$row->Date_of_birth}}" id="b_date" type="text">
                         </div>
 
                         <div class="form-group">
                             <label for="company">Blood group</label>
-                            <input class="form-control" name='b_group' id="b_group" type="text">
+                            <input class="form-control" name='b_group'  value="{{$row->Blood_group}}" id="b_group" type="text">
                         </div>
+                    
+                        @php
+                            $marital1 = '';
+                            $marital2 = '';
+                        @endphp
+                            @if($row->Marital_Status == 'unmarried')
+                                @php
+                                $marital1 = 'selected';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $marital1 = '';
+                                @endphp
+                            @endif
+                            @if($row->Marital_Status == 'married')
+                                @php
+                                $marital2 = 'selected';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $marital2 = '';
+                                @endphp
+                            @endif
 
                         <div class="form-group">
                             <label for="company">Marital Status</label>
                             <select id="select">
-                                <option class="form-control" name='m_status' id="unmarried" value='unmarried'>unmarried
+                                <option class="form-control" name='m_status'  id="unmarried" value='unmarried' {{$marital1}}>unmarried
                                 </option>
-                                <option class="form-control" name='m_status' id="married" value='married'>married
+                                <option class="form-control" name='m_status' id="married" value='married' {{$marital2}}>married
                                 </option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="dl_number">Driving License number</label>
-                            <input class="form-control" name='dl_number' id="dl_number" type="text">
+                            <input class="form-control" name='dl_number' value="{{$row->Driving_License_number}}" id="dl_number" type="text">
                         </div>
 
                         <div class="form-group">
                             <label for="pass_num">Passport number</label>
-                            <input class="form-control" name='pass_num' id="pass_num" type="text">
+                            <input class="form-control" name='pass_num' value="{{$row->Passport_number}}" id="pass_num" type="text">
                         </div>
+
 
                         <div class="form-group">
                             <label for="bio">Bio</label>
-                            <textarea class="form-control" name='bio' id="bio" rows="4" cols="50" placeholder="About yourself..."></textarea>
+                            <textarea class="form-control" name='bio' id="bio" rows="4" cols="50" placeholder="About yourself...">{{$row->Bio}}</textarea>
                         </div>
 
                         <div class="form-actions">
@@ -167,37 +224,37 @@
 
                         <div class="form-group">
                             <label for="c_address">Current Address</label>
-                            <textarea class="form-control" name='c_address' id="c_address" rows="4" cols="50" placeholder="provide your current address information here..."></textarea>
+                            <textarea class="form-control" name='c_address' id="c_address" rows="4" cols="50" placeholder="provide your current address information here...">{{$row->Current_Address}}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="c_city">Current City</label>
-                            <input class="form-control" name='c_city' id="c_city" type="text">
+                            <input class="form-control" name='c_city' value="{{$row->Current_City}}" id="c_city" type="text">
                         </div>
 
                         <div class="form-group">
                             <label for="c_state">Current State</label>
-                            <input class="form-control" name='c_state' id="c_state" type="text">
+                            <input class="form-control" name='c_state' id="c_state" type="text" value="{{$row->Current_State}}">
                         </div>
 
                         <div class="form-group">
                             <label for="c_zipcode">Current Zipcode</label>
-                            <input class="form-control" name='c_zipcode' id="c_zipcode" type="text">
+                            <input class="form-control" name='c_zipcode' id="c_zipcode" type="text" value="{{$row->Current_Zipcode}}">
                         </div>
 
                         <div class="form-group">
                             <label for="c_number">Personal Contact number</label>
-                            <input class="form-control" name='c_number' id="c_number" type="text" placeholder="personal number">
+                            <input class="form-control" name='c_number' id="c_number" type="text" placeholder="personal number" value="{{$row->Personal_Contact_number}}">
                         </div>
 
                         <div class="form-group">
                             <label for="l_numbe">Local Contact number</label>
-                            <input class="form-control" name='l_number' id="l_numbe" type="text" placeholder="local contact number  ">
+                            <input class="form-control" name='l_number' id="l_numbe" type="text" placeholder="local contact number" value="{{$row->Local_Contact_number}}">
                         </div>
 
                         <div class="form-group">
                             <label for="skypeid">Company Skypeid</label>
-                            <input class="form-control" name='skypeid' id="skypeid" type="text">
+                            <input class="form-control" name='skypeid' id="skypeid" type="text" value="{{$row->Company_Skypeid}}">
                         </div>
 
                         <div class="form-actions">
@@ -220,42 +277,42 @@
 
                         <div class="form-group">
                             <label for="p_address">Permanent Address</label>
-                            <textarea class="form-control" name='p_address' id="p_address" rows="4" cols="50" placeholder="provide your permanent address information here..."></textarea>
+                            <textarea class="form-control" name='p_address' id="p_address" rows="4" cols="50" placeholder="provide your permanent address information here...">{{$row->Permanent_Address}}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="p_city">Permanent City</label>
-                            <input class="form-control" name='p_city' id="p_city" type="text">
+                            <input class="form-control" name='p_city' id="p_city" type="text" value="{{$row->Permanent_City}}">
                         </div>
 
                         <div class="form-group">
                             <label for="p_state">Permanent State</label>
-                            <input class="form-control" name='p_state' id="p_state" type="text">
+                            <input class="form-control" name='p_state' id="p_state" type="text" value="{{$row->Permanent_State}}">
                         </div>
 
                         <div class="form-group">
                             <label for="p_zipcode">Permanent Zipcode</label>
-                            <input class="form-control" name='p_zipcode' id="p_zipcode" type="text">
+                            <input class="form-control" name='p_zipcode' id="p_zipcode" type="text" value="{{$row->Permanent_Zipcode}}">
                         </div>
 
                         <div class="form-group">
                             <label for="p_number1">Parents Contact number1</label>
-                            <input class="form-control" name='p_number1' id="p_number1" type="text" placeholder="personal number">
+                            <input class="form-control" name='p_number1' id="p_number1" type="text" placeholder="personal number" value="{{$row->Parents_Contact_number1}}">
                         </div>
 
                         <div class="form-group">
                             <label for="p_number2">Parents Contact number2</label>
-                            <input class="form-control" name='p_number2' id="p_number2" type="text" placeholder="local contact number  ">
+                            <input class="form-control" name='p_number2' id="p_number2" type="text" placeholder="local contact number" value="{{$row->Parents_Contact_number2}}">
                         </div>
 
                         <div class="form-group">
                             <label for="p_emailid">Personal Emailid</label>
-                            <input class="form-control" name='p_emailid' id="p_emailid" type="text">
+                            <input class="form-control" name='p_emailid' id="p_emailid" type="text" value="{{$row->Personal_Emailid}}">
                         </div>
 
                         <div class="form-group">
                             <label for="p_skypeid">Personal Skypeid</label>
-                            <input class="form-control" name='p_skypeid' id="p_skypeid" type="text">
+                            <input class="form-control" name='p_skypeid' id="p_skypeid" type="text" value="{{$row->Personal_Skypeid}}">
                         </div>
 
                         <div class="form-actions">
@@ -278,22 +335,22 @@
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input class="form-control" name='name' id="name" type="text" placeholder="name of person">
+                            <input class="form-control" name='name' id="name" type="text" placeholder="name of person"  value="{{$row->Name}}">
                         </div>
 
                         <div class="form-group">
                             <label for="relation">Relation</label>
-                            <input class="form-control" name='relation' id="relation" type="text" placeholder="relation with person">
+                            <input class="form-control" name='relation' id="relation" type="text" placeholder="relation with person"  value="{{$row->Relation}}">
                         </div>
 
                         <div class="form-group">
                             <label for="number">Contact number</label>
-                            <input class="form-control" name='number' id="number" type="text" placeholder="contact number">
+                            <input class="form-control" name='number' id="number" type="text" placeholder="contact number"  value="{{$row->Contact_number}}">
                         </div>
 
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea class="form-control" name='address' id="address" rows="4" cols="50"></textarea>
+                            <textarea class="form-control" name='address' id="address" rows="4" cols="50">{{$row->Personal_Skypeid}}</textarea>
                         </div>
 
                         <div class="form-actions">
@@ -313,18 +370,79 @@
                     @csrf <div class="card">
                         <div class="card-header"><strong>Qualification Details</strong></div>
 
-
+                        @php
+                            $education1 = '';
+                            $education2 = '';
+                            $education3 = '';
+                            $education4 = '';
+                            $education5 = '';
+                        @endphp
+                            @if($row->Education_Detail == 'ten')
+                                @php
+                                $education1 = 'selected';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $education1 = '';
+                                @endphp
+                            @endif
+                            @if($row->Education_Detail == 'twelve')
+                                @php
+                                $education2 = 'selected';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $education2 = '';
+                                @endphp
+                            @endif
+                            @if($row->Education_Detail == 'deploma')
+                                @php
+                                $education3 = 'selected';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $education3 = '';
+                                @endphp
+                            @endif
+                            @if($row->Education_Detail == 'graduation')
+                                @php
+                                $education4 = 'selected';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $education4 = '';
+                                @endphp
+                            @endif
+                            @if($row->Education_Detail == 'post_graduation')
+                                @php
+                                $education5 = 'selected';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $education5 = '';
+                                @endphp
+                            @endif
                         <div class="details">
 
                             <div class="form-group">
                                 <label for="company">Education Detail</label>
                                 <select id="select_education" name="select_education" class="select_education">
-                                    <option class="form-control" name='education[]' id="10th" value='10th'>10th</option>
-                                    <option class="form-control" name='education[]' id="12th" value='12th'>12th</option>
-                                    <option class="form-control" name='education[]' id="deploma" value='deploma'>Deploma
+                                    <option class="form-control" name='education[]' id="10th" value='ten' {{$education1}}>10th</option>
+                                    <option class="form-control" name='education[]' id="12th" value='twelve' {{$education2}}>12th</option>
+                                    <option class="form-control" name='education[]' id="deploma" value='deploma' {{$education3}}>Deploma
                                     </option>
-                                    <option class="form-control" name='education[]' id="graduation" value='graduation' selected>Graduation</option>
-                                    <option class="form-control" name='education[]' id="post_graduation" value='post_graduation'>Post Graduation</option>
+                                    <option class="form-control" name='education[]' id="graduation" value='graduation' {{$education4}}>Graduation</option>
+                                    <option class="form-control" name='education[]' id="post_graduation" value='post_graduation' {{$education5}}>Post Graduation</option>
 
                                 </select>
                             </div>
@@ -333,22 +451,22 @@
 
                             <div class="form-group">
                                 <label for="degree">Degree</label>
-                                <input class="form-control degree" name='degree[]' id="degree" type="text">
+                                <input class="form-control degree" name='degree[]' id="degree" type="text" value="{{$row->Degree}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="university">University</label>
-                                <input class="form-control university" name='university[]' id="university" type="text">
+                                <input class="form-control university" name='university[]' id="university" type="text"  value="{{$row->University}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="passing_year">Passing_year</label>
-                                <input class="form-control passing_year" name='passing_year[]' id="passing_year" type="text">
+                                <input class="form-control passing_year" name='passing_year[]' id="passing_year" type="text"  value="{{$row->Passing_year}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="grade">Grade</label>
-                                <input class="form-control grade" name='grade[]' id="grade" type="text">
+                                <input class="form-control grade" name='grade[]' id="grade" type="text"  value="{{$row->Grade}}">
                             </div>
 
 
@@ -364,17 +482,59 @@
 
                         <div class="form-group">
                             <label for="">Skills</label>
-                            <input type="text" class="form-control" name="skill" id="tags-input" />
+                            <input type="text" class="form-control" name="skill" id="tags-input"   value="{{$row->Skills}}" />
 
                         </div>
 
                         <div class="form-group error"></div>
 
+                        
+                        @php    
+                            $language = explode(',',$row->Known_language);
+                            $language1 = '';
+                            $language2 = '';
+                            $language3 = '';
+                           
+                          
+                        @endphp
+                            @if(in_array('gujarati',$language))
+                                @php
+                                $language1 = 'checked';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $language1 = '';
+                                @endphp
+                            @endif
+                            @if(in_array('hindi',$language))
+                                @php
+                                $language2 = 'checked';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $language2 = '';
+                                @endphp
+                            @endif
+                            @if(in_array('english',$language))
+                                @php
+                                $language3 = 'checked';
+                               
+                                @endphp
+                               
+                            @else
+                                @php
+                                $language3 = '';
+                                @endphp
+                            @endif
                         <div class="form-group">
                             <label for="">Known language</label>
-                            <input type="checkbox" name="language[]" class="checkbox" value="gujarati">Gujarati
-                            <input type="checkbox" name="language[]" class="checkbox" value="hindi">Hindi
-                            <input type="checkbox" name="language[]" class="checkbox" value="english">English
+                            <input type="checkbox" name="language[]" class="checkbox" value="gujarati" {{$language1}}>Gujarati
+                            <input type="checkbox" name="language[]" class="checkbox" value="hindi" {{$language2}}>Hindi
+                            <input type="checkbox" name="language[]" class="checkbox" value="english" {{$language3}}>English
 
                         </div>
 
@@ -401,33 +561,33 @@
 
                         <div class="form-group">
                             <label for="joining_date">Date of joining</label>
-                            <input class="form-control" name='joining_date' id="joining_date" value="10/24/1984">
+                            <input class="form-control" name='joining_date' id="joining_date"  value="{{$row->Date_of_joining}}">
                         </div>
 
                         <div class="form-group">
                             <label for="employee_id">Employee id</label>
-                            <input class="form-control" name='employee_id' id="employee_id" type="text">
+                            <input class="form-control" name='employee_id' id="employee_id" type="text" value="{{$row->Employee_id}}">
                         </div>
 
                         <div class="form-group">
                             <label for="department">Department</label>
-                            <input class="form-control" name='department' id="department" type="text">
+                            <input class="form-control" name='department' id="department" type="text" value="{{$row->Department}}">
                         </div>
 
                         <div class="form-group">
                             <label for="designation">Designation</label>
-                            <input class="form-control" name='designation' id="designation" type="text">
+                            <input class="form-control" name='designation' id="designation" type="text" value="{{$row->Designation}}">
 
                         </div>
 
                         <div class="form-group">
                             <label for="job_profile">Job Profile</label>
-                            <input class="form-control" name='job_profile' id="job_profile" type="text" placeholder="name of person">
+                            <input class="form-control" name='job_profile' id="job_profile" type="text" placeholder="name of person" value="{{$row->Job_Profile}}">
                         </div>
 
                         <div class="form-group">
                             <label for="employee_role">Role</label>
-                            <input class="form-control" name='employee_role' id="employee_role" type="text">
+                            <input class="form-control" name='employee_role' id="employee_role" type="text" value="{{$row->Role}}">
 
                         </div>
 
@@ -452,22 +612,22 @@
 
                             <div class="form-group">
                                 <label for="duration">Duration</label>
-                                <input class="form-control duration" name='duration[]' id="duration" type="text">
+                                <input class="form-control duration" name='duration[]' id="duration" type="text" value="{{$row->Duration}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="c_name">Company Name</label>
-                                <input class="form-control" name='c_name[]' id="c_name" type="text" placeholder="previous company name">
+                                <input class="form-control" name='c_name[]' id="c_name" type="text" placeholder="previous company name" value="{{$row->Company_Name}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="company_number">Company Number</label>
-                                <input class="form-control" name="company_number[]" id="company_number" type="text" placeholder="previous company number">
+                                <input class="form-control" name="company_number[]" id="company_number" type="text" placeholder="previous company number" value="{{$row->Company_Number}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="company_address">Company Address</label>
-                                <textarea class="form-control company_address" name='company_address[]' id="company_address" rows="4" cols="50" placeholder="provide your previous company address information here..."></textarea>
+                                <textarea class="form-control company_address" name='company_address[]' id="company_address" rows="4" cols="50" placeholder="provide your previous company address information here...">{{$row->Company_Address}}</textarea>
                             </div>
 
                         </div>
@@ -499,17 +659,17 @@
 
                         <div class="form-group">
                             <label for="bank_name">Bank Name</label>
-                            <input class="form-control" name='bank_name' id="bank_name" type="text">
+                            <input class="form-control" name='bank_name' id="bank_name" type="text" value="{{$row->Bank_Name}}">
                         </div>
 
                         <div class="form-group">
                             <label for="branch_name">Branch Name</label>
-                            <input class="form-control" name='branch_name' id="branch_name" type="text">
+                            <input class="form-control" name='branch_name' id="branch_name" type="text" value="{{$row->Branch_Name}}">
                         </div>
 
                         <div class="form-group">
                             <label for="account_number">Account number</label>
-                            <input class="form-control" name='account_number' id="account_number" type="text">
+                            <input class="form-control" name='account_number' id="account_number" type="text" value="{{$row->Account_number}}">
                         </div>
 
                         <div class="form-actions">
@@ -551,8 +711,7 @@
                                 </select>
 
                                 <input type="file" name="attach_file[]" class="attach_file" id="attach_file">
-
-
+                              
                             </div>
 
                             <div class="append_attachment">`
@@ -599,6 +758,7 @@
 <!-- Get last part of url -->
 <input type="text" id="url_id" value="{{ collect(request()->segments())->last() }}" hidden>
 
+@endforeach
 
 @endsection
 
