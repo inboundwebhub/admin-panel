@@ -16,7 +16,9 @@
 
 <div id="div1" class="form-group    " style="width:250px;height:30px;display:none;background-color:#90EE90;">data successfully saved.</div>
 
-
+@php
+$array = [];
+@endphp
 @foreach($data as $row)
 
 <div class="col-md-6 mb-4">
@@ -58,37 +60,37 @@
                             <input class="form-control" name='l_name' id="l_name" value="{{$row->last_name}}" type="text" placeholder="Enter your first name">
                         </div>
                         @php
-                            $gender1 = '';
-                            $gender2 = '';
+                        $gender1 = '';
+                        $gender2 = '';
                         @endphp
-                            @if($row->gender == 'male')
-                                @php
-                                $gender1 = 'checked';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $gender1 = '';
-                                @endphp
-                            @endif
-                            @if($row->gender == 'female')
-                                @php
-                                $gender2 = 'checked';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $gender2 = '';
-                                @endphp
-                            @endif
-                        
+                        @if($row->gender == 'male')
+                        @php
+                        $gender1 = 'checked';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $gender1 = '';
+                        @endphp
+                        @endif
+                        @if($row->gender == 'female')
+                        @php
+                        $gender2 = 'checked';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $gender2 = '';
+                        @endphp
+                        @endif
+
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="col-md-9 col-form-label">
                                 <div class="form-check form-check-inline mr-1">
-                                    <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender" {{$gender1}} >
+                                    <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender" {{$gender1}}>
                                     <label class="form-check-label" for="inline-radio1">Male</label>
                                 </div>
                                 <div class="form-check form-check-inline mr-1">
@@ -148,40 +150,40 @@
 
                         <div class="form-group">
                             <label for="company">Blood group</label>
-                            <input class="form-control" name='b_group'  value="{{$row->Blood_group}}" id="b_group" type="text">
+                            <input class="form-control" name='b_group' value="{{$row->Blood_group}}" id="b_group" type="text">
                         </div>
-                    
+
                         @php
-                            $marital1 = '';
-                            $marital2 = '';
+                        $marital1 = '';
+                        $marital2 = '';
                         @endphp
-                            @if($row->Marital_Status == 'unmarried')
-                                @php
-                                $marital1 = 'selected';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $marital1 = '';
-                                @endphp
-                            @endif
-                            @if($row->Marital_Status == 'married')
-                                @php
-                                $marital2 = 'selected';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $marital2 = '';
-                                @endphp
-                            @endif
+                        @if($row->Marital_Status == 'unmarried')
+                        @php
+                        $marital1 = 'selected';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $marital1 = '';
+                        @endphp
+                        @endif
+                        @if($row->Marital_Status == 'married')
+                        @php
+                        $marital2 = 'selected';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $marital2 = '';
+                        @endphp
+                        @endif
 
                         <div class="form-group">
                             <label for="company">Marital Status</label>
                             <select id="select">
-                                <option class="form-control" name='m_status'  id="unmarried" value='unmarried' {{$marital1}}>unmarried
+                                <option class="form-control" name='m_status' id="unmarried" value='unmarried' {{$marital1}}>unmarried
                                 </option>
                                 <option class="form-control" name='m_status' id="married" value='married' {{$marital2}}>married
                                 </option>
@@ -335,22 +337,22 @@
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input class="form-control" name='name' id="name" type="text" placeholder="name of person"  value="{{$row->Name}}">
+                            <input class="form-control" name='name' id="name" type="text" placeholder="name of person" value="{{$row->Name}}">
                         </div>
 
                         <div class="form-group">
                             <label for="relation">Relation</label>
-                            <input class="form-control" name='relation' id="relation" type="text" placeholder="relation with person"  value="{{$row->Relation}}">
+                            <input class="form-control" name='relation' id="relation" type="text" placeholder="relation with person" value="{{$row->Relation}}">
                         </div>
 
                         <div class="form-group">
                             <label for="number">Contact number</label>
-                            <input class="form-control" name='number' id="number" type="text" placeholder="contact number"  value="{{$row->Contact_number}}">
+                            <input class="form-control" name='number' id="number" type="text" placeholder="contact number" value="{{$row->Contact_number}}">
                         </div>
 
                         <div class="form-group">
                             <label for="address">Address</label>
-                            <textarea class="form-control" name='address' id="address" rows="4" cols="50">{{$row->Personal_Skypeid}}</textarea>
+                            <textarea class="form-control" name='address' id="address" rows="4" cols="50">{{$row->Address}}</textarea>
                         </div>
 
                         <div class="form-actions">
@@ -371,67 +373,67 @@
                         <div class="card-header"><strong>Qualification Details</strong></div>
 
                         @php
-                            $education1 = '';
-                            $education2 = '';
-                            $education3 = '';
-                            $education4 = '';
-                            $education5 = '';
+                        $education1 = '';
+                        $education2 = '';
+                        $education3 = '';
+                        $education4 = '';
+                        $education5 = '';
                         @endphp
-                            @if($row->Education_Detail == 'ten')
-                                @php
-                                $education1 = 'selected';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $education1 = '';
-                                @endphp
-                            @endif
-                            @if($row->Education_Detail == 'twelve')
-                                @php
-                                $education2 = 'selected';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $education2 = '';
-                                @endphp
-                            @endif
-                            @if($row->Education_Detail == 'deploma')
-                                @php
-                                $education3 = 'selected';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $education3 = '';
-                                @endphp
-                            @endif
-                            @if($row->Education_Detail == 'graduation')
-                                @php
-                                $education4 = 'selected';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $education4 = '';
-                                @endphp
-                            @endif
-                            @if($row->Education_Detail == 'post_graduation')
-                                @php
-                                $education5 = 'selected';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $education5 = '';
-                                @endphp
-                            @endif
+                        @if($row->Education_Detail == 'ten')
+                        @php
+                        $education1 = 'selected';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $education1 = '';
+                        @endphp
+                        @endif
+                        @if($row->Education_Detail == 'twelve')
+                        @php
+                        $education2 = 'selected';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $education2 = '';
+                        @endphp
+                        @endif
+                        @if($row->Education_Detail == 'deploma')
+                        @php
+                        $education3 = 'selected';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $education3 = '';
+                        @endphp
+                        @endif
+                        @if($row->Education_Detail == 'graduation')
+                        @php
+                        $education4 = 'selected';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $education4 = '';
+                        @endphp
+                        @endif
+                        @if($row->Education_Detail == 'post_graduation')
+                        @php
+                        $education5 = 'selected';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $education5 = '';
+                        @endphp
+                        @endif
                         <div class="details">
 
                             <div class="form-group">
@@ -456,17 +458,17 @@
 
                             <div class="form-group">
                                 <label for="university">University</label>
-                                <input class="form-control university" name='university[]' id="university" type="text"  value="{{$row->University}}">
+                                <input class="form-control university" name='university[]' id="university" type="text" value="{{$row->University}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="passing_year">Passing_year</label>
-                                <input class="form-control passing_year" name='passing_year[]' id="passing_year" type="text"  value="{{$row->Passing_year}}">
+                                <input class="form-control passing_year" name='passing_year[]' id="passing_year" type="text" value="{{$row->Passing_year}}">
                             </div>
 
                             <div class="form-group">
                                 <label for="grade">Grade</label>
-                                <input class="form-control grade" name='grade[]' id="grade" type="text"  value="{{$row->Grade}}">
+                                <input class="form-control grade" name='grade[]' id="grade" type="text" value="{{$row->Grade}}">
                             </div>
 
 
@@ -482,54 +484,54 @@
 
                         <div class="form-group">
                             <label for="">Skills</label>
-                            <input type="text" class="form-control" name="skill" id="tags-input"   value="{{$row->Skills}}" />
+                            <input type="text" class="form-control" name="skill" id="tags-input" value="{{$row->Skills}}" />
 
                         </div>
 
                         <div class="form-group error"></div>
 
-                        
-                        @php    
-                            $language = explode(',',$row->Known_language);
-                            $language1 = '';
-                            $language2 = '';
-                            $language3 = '';
-                           
-                          
+
+                        @php
+                        $language = explode(',',$row->Known_language);
+                        $language1 = '';
+                        $language2 = '';
+                        $language3 = '';
+
+
                         @endphp
-                            @if(in_array('gujarati',$language))
-                                @php
-                                $language1 = 'checked';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $language1 = '';
-                                @endphp
-                            @endif
-                            @if(in_array('hindi',$language))
-                                @php
-                                $language2 = 'checked';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $language2 = '';
-                                @endphp
-                            @endif
-                            @if(in_array('english',$language))
-                                @php
-                                $language3 = 'checked';
-                               
-                                @endphp
-                               
-                            @else
-                                @php
-                                $language3 = '';
-                                @endphp
-                            @endif
+                        @if(in_array('gujarati',$language))
+                        @php
+                        $language1 = 'checked';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $language1 = '';
+                        @endphp
+                        @endif
+                        @if(in_array('hindi',$language))
+                        @php
+                        $language2 = 'checked';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $language2 = '';
+                        @endphp
+                        @endif
+                        @if(in_array('english',$language))
+                        @php
+                        $language3 = 'checked';
+
+                        @endphp
+
+                        @else
+                        @php
+                        $language3 = '';
+                        @endphp
+                        @endif
                         <div class="form-group">
                             <label for="">Known language</label>
                             <input type="checkbox" name="language[]" class="checkbox" value="gujarati" {{$language1}}>Gujarati
@@ -561,7 +563,7 @@
 
                         <div class="form-group">
                             <label for="joining_date">Date of joining</label>
-                            <input class="form-control" name='joining_date' id="joining_date"  value="{{$row->Date_of_joining}}">
+                            <input class="form-control" name='joining_date' id="joining_date" value="{{$row->Date_of_joining}}">
                         </div>
 
                         <div class="form-group">
@@ -679,8 +681,15 @@
 
                     </div>
                 </form>
-            </div>
 
+            </div>
+    @php
+       $array[] = $row->attach_file ;
+       $array[] = $row->profile_pic;
+    @endphp
+@endforeach
+<!-- {{json_encode($array)}} -->
+<!-- {{json_encode($array)}} -->
             <div class="tab-pane" id="attachment" role="tabpanel">
 
                 <form id="form10" enctype="multipart/form-data">
@@ -711,7 +720,10 @@
                                 </select>
 
                                 <input type="file" name="attach_file[]" class="attach_file" id="attach_file">
-                              
+                                <!-- @foreach($array as $arr)
+                                <img src="{{URL::asset($arr) }}" height="30px" width="30px"/> 
+
+                                @endforeach -->
                             </div>
 
                             <div class="append_attachment">`
@@ -723,6 +735,7 @@
                             <div class="form-group">
                                 <a class="attachment_add_more"><i class="icon-plus"></i>add more</a>
                             </div>
+
                         </div>
 
 
@@ -758,7 +771,7 @@
 <!-- Get last part of url -->
 <input type="text" id="url_id" value="{{ collect(request()->segments())->last() }}" hidden>
 
-@endforeach
+
 
 @endsection
 

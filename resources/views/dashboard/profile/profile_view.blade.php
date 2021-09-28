@@ -36,7 +36,7 @@
                             <a href="http://127.0.0.1:8000/profile/{{$row->id}}" class="btn btn-block btn-primary">View</a>
                         </td>
                         <td>
-                            <a href="http://127.0.0.1:8000/profile/insert/{{$row->id}}" class="btn btn-block btn-primary">Edit</a>
+                            <a href="http://127.0.0.1:8000/profile/edit/{{$row->id}}" class="btn btn-block btn-primary">Edit</a>
                         </td>
                         <td>
                             <form action="http://127.0.0.1:8000/users/{{$row->id}}" method="POST">

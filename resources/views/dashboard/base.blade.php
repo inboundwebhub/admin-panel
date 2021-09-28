@@ -64,7 +64,7 @@
 
   <body class="c-app">
  
-  <!-- @if(URL::previous() == 'http://127.0.0.1:8000/profile')
+      @if(URL::previous() == 'http://127.0.0.1:8000/profile/insert')
        
         @php
             Session::forget('id1');
@@ -79,7 +79,7 @@
             Session::forget('id10');
         @endphp
 
-      @endif  -->
+      @endif 
 
     <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
 
