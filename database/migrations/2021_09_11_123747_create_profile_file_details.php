@@ -17,6 +17,7 @@ class CreateProfileFileDetails extends Migration
             $table->id();
             $table->string('profile_pic');
             $table->string('attach_file');
+            $table->string('attachment_name');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
            
@@ -32,5 +33,8 @@ class CreateProfileFileDetails extends Migration
     public function down()
     {
         Schema::dropIfExists('profile_file_details');
+        Schema::table('profile_file_details', function($table) {
+            $table->dropColumn('attachment_name');
+        });
     }
 }

@@ -535,7 +535,7 @@
 
                             <div class="attachment_details">
 
-                                <select id="attach_select">
+                                <select id="attach_select" class="attach_select">
                                     <option>--Select--</option>
                                     <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
                                     </option>

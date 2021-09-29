@@ -62,10 +62,11 @@ class ProfileController extends Controller
 
     public function insert_personal_details(Request $request)
     {
-       
-        die;
+              
         $url_id = $request->url_id;
+
         if ($url_id == 'insert') {
+
             session()->forget('id1');
             session()->forget('id2');
             session()->forget('id3');
@@ -79,8 +80,10 @@ class ProfileController extends Controller
 
             $id = $request->session()->get('id1');
 
+            $file_data = ProfileFileDetail::Where('id', $id)->get();
 
             $data = ProfilePersonalDetails::Where('id', $id)->get();
+
             $email = ProfilePersonalDetails::Where('emailid', $request->email)->get();
             $personal_details_id = '';
             foreach ($email as $data) {
@@ -117,6 +120,50 @@ class ProfileController extends Controller
             } else {
                 echo "entered email is already exists. please enter other email.";
             }
+
+            // Insert File
+            
+            $id = $request->session()->get('id10');
+            echo $id;
+            $session_id1 = $request->session()->get('id1');
+            if($session_id1 == '')
+            {
+                $session_id1 == '';
+            }
+
+            $data = ProfileFileDetail::Where('id', $id)->get();
+            
+            if (empty($id) || count($data) == 0) {
+                echo "hello world";
+                $data = new ProfileFileDetail;
+                $data->profile_pic = $request->file('profile_pic')->store('images');
+
+                $data->attach_file = '';
+                $data->attachment_name = '';
+                $data->user_id =  $session_id1;
+
+                $data->save();
+                $id = $data->id;
+                $request->session()->put('id10', $id);
+
+                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+ 
+                //     array_push($array,$id);
+                //    print_r($array);
+            }
+
+            if (!empty($id) && !empty($data)) {
+
+                $data = ProfileFileDetail::find($id);
+
+                $data->profile_pic = $request->file('profile_pic')->store('images');
+                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+              
+                // $data->attach_file = '';
+
+                $data->save();
+            }
+
         } else {
             $email = ProfilePersonalDetails::Where('emailid', $request->email)->get();
             $personal_details_id = '';
@@ -137,6 +184,44 @@ class ProfileController extends Controller
             } else {
                 echo "entered email is already exists. please enter other email.";
             }
+
+            // file update 
+
+            $session_id1 = $request->session()->get('id1');
+            if($session_id1 == '')
+            {
+                $session_id1 == '';
+            }
+          
+            $check_data =  ProfileFileDetail::Where('user_id', $url_id)->get();
+            $length = count($check_data);
+
+            if ($length == 0) {   
+                echo "hello world";
+                $data = new ProfileFileDetail;
+                $data->profile_pic = $request->file('profile_pic')->store('images');
+
+                $data->attach_file = '';
+                $data->attachment_name = '';
+                $data->user_id =  $url_id;
+
+                $data->save();
+                $id = $data->id;
+                $request->session()->put('id10', $id);
+
+                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+                
+            }
+            
+            else
+            {
+
+                ProfileFileDetail::where('user_id', $url_id)->update(["profile_pic" => $request->file('profile_pic')->store('images') ]);
+            
+                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+
+            }
+
         }
     }
 
@@ -706,6 +791,7 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
+
             $id = $request->session()->get('id10');
             echo $id;
 
@@ -714,7 +800,7 @@ class ProfileController extends Controller
             if (empty($id) || count($data) == 0) {
                 echo "hello world";
                 $data = new ProfileFileDetail;
-                $data->profile_pic = $request->file('profile_pic')->store('images');
+                $data->profile_pic = '';
 
                 $files = [];
                 foreach ($request->file('attach_file') as $file) {
@@ -723,7 +809,9 @@ class ProfileController extends Controller
                     array_push($files, $file1);
                 }
                 $files = implode(',', $files);
+                
                 $data->attach_file = $files;
+                $data->attachment_name = $request->attachment_name;
                 $data->user_id =  $request->session()->get('id1');
 
                 $data->save();
@@ -737,8 +825,9 @@ class ProfileController extends Controller
 
                 $data = ProfileFileDetail::find($id);
 
-                $data->profile_pic = $request->file('profile_pic')->store('images');
-                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+                // $data->profile_pic = '';
+
+                // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
 
                 $files = [];
                 foreach ($request->file('attach_file') as $file) {
@@ -749,7 +838,7 @@ class ProfileController extends Controller
                 }
                 $files = implode(',', $files);
                 $data->attach_file = $files;
-
+                $data->attachment_name = $request->attachment_name;
 
                 $data->save();
             }
@@ -770,19 +859,18 @@ class ProfileController extends Controller
                 }
 
                 $files = implode(',', $files);
-                // $destinationPath = public_path().'/images' ;
-                // $file->move($destinationPath,$files);
-                ProfileFileDetail::where('user_id', $url_id)->update([
-                    "profile_pic" =>  $request->file('profile_pic')->store('images'),
-                    "attach_file" => $files
-                ]);
-                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+              
+                ProfileFileDetail::where('user_id', $url_id)->update(["attach_file" => $files,
+                "attachment_name" => $request->attachment_name]);
+                
+                // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+            
             } else {
                 echo "hello world";
 
                 $data = new ProfileFileDetail;
-                $data->profile_pic = $request->file('profile_pic')->store('images');
-                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+                $data->profile_pic = '';
+                // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
 
                 $files = [];
                 foreach ($request->file('attach_file') as $file) {
@@ -791,7 +879,9 @@ class ProfileController extends Controller
                     array_push($files, $file1);
                 }
                 $files = implode(',', $files);
+
                 $data->attach_file = $files;
+                $data->attachment_name = $request->attachment_name;
                 $data->user_id = $url_id;
 
                 $data->save();

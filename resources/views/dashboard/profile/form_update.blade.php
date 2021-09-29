@@ -704,17 +704,17 @@ $array = [];
 
                             <div class="attachment_details">
 
-                                <select id="attach_select">
-                                    <option>--Select--</option>
+                                <select id="attach_select" class='attach_select'>
+                                    <option selected>--Select--</option>
                                     <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
                                     </option>
-                                    <option class="form-control" name='Licence' id="Licence" value='Licence'>Licence
+                                    <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
                                     </option>
-                                    <option class="form-control" name='Adharcard' id="Adharcard" value='Adharcard'>
+                                    <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
                                         Adharcard</option>
-                                    <option class="form-control" name='Passport' id="Passport" value='Passport'>Passport
+                                    <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
                                     </option>
-                                    <option class="form-control" name='Votercard' id="Votercard" value='Votercard'>
+                                    <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
                                         Votercard</option>
 
                                 </select>
@@ -777,6 +777,7 @@ $array = [];
 
 @section('javascript')
 
+<script src="{{URL::asset('js/profile.js')}}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous"></script>
 
@@ -789,7 +790,7 @@ $array = [];
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<script src="{{URL::asset('js/profile.js')}}"></script>
+
 
 <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
