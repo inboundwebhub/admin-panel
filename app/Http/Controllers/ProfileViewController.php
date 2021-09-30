@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProfilePersonalDetails;
+use App\Models\ProfileGeneralInformation;
+use App\Models\ProfileCurrentContact;
+use App\Models\ProfilePermanentContact;
+use App\Models\ProfileEmergencyContact;
+use App\Models\ProfileQualificationDetails;
+use App\Models\ProfileCompanyDetails;
+use App\Models\ProfileWorkExperiance;
+use App\Models\ProfileBankDetail;
+use App\Models\ProfileFileDetail;
 use Illuminate\Support\Facades\DB;  
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class ProfileViewController extends Controller
 {
-    public function profile_form()
+    public function profile_view()
     {
         
       $data = ProfilePersonalDetails::join('profile_general_information','profile_general_information.user_id', '=','profile_personal_details.id', 'left outer', 'right outer')
@@ -28,13 +38,22 @@ class ProfileViewController extends Controller
         return view('dashboard.profile.profile_view', ['data'=>$data]);
     }
 
-    // public function profile_edit(Request $request)
-    // {   
-    //     $id = $request->id;
-    //     $data = ProfilePersonalDetails::join('profile_general_information','profile_general_information.user_id', '=','profile_personal_details.id')
-    //             ->where('profile_personal_details.id', '=', $id)
-    //             ->get();
-    
-    //     return view('dashboard.profile.form', ['data'=>$data]);
-    // }
+    public function profile_delete(Request $request)
+    {   
+        $id = $request->id;
+       
+        ProfilePersonalDetails::where('id',$id)->delete();
+        ProfileGeneralInformation::where('user_id',$id)->delete();
+        ProfileCurrentContact::where('user_id',$id)->delete();
+        ProfilePermanentContact::where('user_id',$id)->delete();
+        ProfileEmergencyContact::where('user_id',$id)->delete();
+        ProfileQualificationDetails::where('id',$id)->delete();
+        ProfileCompanyDetails::where('user_id',$id)->delete();
+        ProfileWorkExperiance::where('user_id',$id)->delete();
+        ProfileBankDetail::where('user_id',$id)->delete();
+        ProfileFileDetail::where('user_id',$id)->delete();
+
+        return redirect('http://127.0.0.1:8000/profile/view');
+    }
+
 }

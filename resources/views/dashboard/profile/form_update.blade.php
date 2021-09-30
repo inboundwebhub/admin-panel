@@ -17,7 +17,8 @@
 <div id="div1" class="form-group    " style="width:250px;height:30px;display:none;background-color:#90EE90;">data successfully saved.</div>
 
 @php
-$array = [];
+$array1 = [];
+$array2 = [];
 @endphp
 @foreach($data as $row)
 
@@ -116,12 +117,13 @@ $array = [];
                                 <img src="http://hrms.abhicenation.com/uploads/system_users/thumb/me.jpg">
 
                                 <input type="file" name="profile_pic" id="profile_pic" class="input-xlarge ui-wizard-content ">
+                                <img src="{{URL::asset( $row->profile_pic )}}" height="50px" width="50px" />
+
                             </div>
 
                             <div class="error"> </div>
 
                         </div>
-
 
 
                         <div class="form-actions">
@@ -683,13 +685,8 @@ $array = [];
                 </form>
 
             </div>
-    @php
-       $array[] = $row->attach_file ;
-       $array[] = $row->profile_pic;
-    @endphp
-@endforeach
-<!-- {{json_encode($array)}} -->
-<!-- {{json_encode($array)}} -->
+
+
             <div class="tab-pane" id="attachment" role="tabpanel">
 
                 <form id="form10" enctype="multipart/form-data">
@@ -720,21 +717,33 @@ $array = [];
                                 </select>
 
                                 <input type="file" name="attach_file[]" class="attach_file" id="attach_file">
-                                <!-- @foreach($array as $arr)
-                                <img src="{{URL::asset($arr) }}" height="30px" width="30px"/> 
 
-                                @endforeach -->
                             </div>
 
                             <div class="append_attachment">`
 
                             </div>
 
-                            <div class="form-group"></div>
+                            @if($row->attach_file != '')
+                            @php
+                            $arr = json_decode($row->attach_file);
+                            $arr2 = explode(',',$row->attachment_name)
+                            @endphp
+                            @for($i = 0; $i < count(json_decode($row->attach_file)); $i++ )
 
-                            <div class="form-group">
-                                <a class="attachment_add_more"><i class="icon-plus"></i>add more</a>
-                            </div>
+                                {{$arr2[$i]}}
+                                <img src="{{URL::asset($arr[$i]) }}" height="30px" width="30px" />
+
+                                @endfor
+                                @endif
+
+
+
+                                <div class="form-group"></div>
+
+                                <div class="form-group">
+                                    <a class="attachment_add_more"><i class="icon-plus"></i>add more</a>
+                                </div>
 
                         </div>
 
@@ -753,7 +762,7 @@ $array = [];
         </div>
     </div>
 </div>
-
+@endforeach
 <!-- @php
     $url_id = '';
 @endphp
@@ -776,6 +785,7 @@ $array = [];
 @endsection
 
 @section('javascript')
+
 
 <script src="{{URL::asset('js/profile.js')}}"></script>
 

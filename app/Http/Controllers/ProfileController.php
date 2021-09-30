@@ -18,6 +18,7 @@ use App\Models\ProfileFileDetail;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use Redirect;
 
 class ProfileController extends Controller
 {
@@ -62,7 +63,7 @@ class ProfileController extends Controller
 
     public function insert_personal_details(Request $request)
     {
-              
+
         $url_id = $request->url_id;
 
         if ($url_id == 'insert') {
@@ -122,17 +123,16 @@ class ProfileController extends Controller
             }
 
             // Insert File
-            
+
             $id = $request->session()->get('id10');
             echo $id;
             $session_id1 = $request->session()->get('id1');
-            if($session_id1 == '')
-            {
+            if ($session_id1 == '') {
                 $session_id1 == '';
             }
 
             $data = ProfileFileDetail::Where('id', $id)->get();
-            
+
             if (empty($id) || count($data) == 0) {
                 echo "hello world";
                 $data = new ProfileFileDetail;
@@ -147,7 +147,7 @@ class ProfileController extends Controller
                 $request->session()->put('id10', $id);
 
                 $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
- 
+
                 //     array_push($array,$id);
                 //    print_r($array);
             }
@@ -158,12 +158,11 @@ class ProfileController extends Controller
 
                 $data->profile_pic = $request->file('profile_pic')->store('images');
                 $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
-              
+
                 // $data->attach_file = '';
 
                 $data->save();
             }
-
         } else {
             $email = ProfilePersonalDetails::Where('emailid', $request->email)->get();
             $personal_details_id = '';
@@ -188,15 +187,14 @@ class ProfileController extends Controller
             // file update 
 
             $session_id1 = $request->session()->get('id1');
-            if($session_id1 == '')
-            {
+            if ($session_id1 == '') {
                 $session_id1 == '';
             }
-          
+
             $check_data =  ProfileFileDetail::Where('user_id', $url_id)->get();
             $length = count($check_data);
 
-            if ($length == 0) {   
+            if ($length == 0) {
                 echo "hello world";
                 $data = new ProfileFileDetail;
                 $data->profile_pic = $request->file('profile_pic')->store('images');
@@ -210,26 +208,26 @@ class ProfileController extends Controller
                 $request->session()->put('id10', $id);
 
                 $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
-                
-            }
-            
-            else
-            {
+            } else {
 
-                ProfileFileDetail::where('user_id', $url_id)->update(["profile_pic" => $request->file('profile_pic')->store('images') ]);
-            
+                ProfileFileDetail::where('user_id', $url_id)->update(["profile_pic" => $request->file('profile_pic')->store('images')]);
+
                 $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
-
             }
-
         }
     }
 
     public function insert_general_details(Request $request)
     {
+   
         $url_id = $request->url_id;
 
         if ($url_id == 'insert') {
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+            }
+
             $id = $request->session()->get('id2');
             echo $id;
 
@@ -293,7 +291,6 @@ class ProfileController extends Controller
             }
         }
     }
-
 
 
     public function insert_contact_details_current(Request $request)
@@ -808,8 +805,8 @@ class ProfileController extends Controller
                     $file->move(public_path('images'), $file1);
                     array_push($files, $file1);
                 }
-                $files = implode(',', $files);
-                
+                $files = json_encode($files);
+
                 $data->attach_file = $files;
                 $data->attachment_name = $request->attachment_name;
                 $data->user_id =  $request->session()->get('id1');
@@ -836,7 +833,7 @@ class ProfileController extends Controller
                     $file->move(public_path('images'), $file1);
                     array_push($files, $file1);
                 }
-                $files = implode(',', $files);
+                $files = json_encode($files);
                 $data->attach_file = $files;
                 $data->attachment_name = $request->attachment_name;
 
@@ -858,13 +855,16 @@ class ProfileController extends Controller
                     array_push($files, $file1);
                 }
 
-                $files = implode(',', $files);
-              
-                ProfileFileDetail::where('user_id', $url_id)->update(["attach_file" => $files,
-                "attachment_name" => $request->attachment_name]);
-                
+                $files = json_encode($files);
+                $attachment_name = $request->attachment_name;
+
+                ProfileFileDetail::where('user_id', $url_id)->update([
+                    "attach_file" => $files,
+                    "attachment_name" => $attachment_name
+                ]);
+
                 // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
-            
+
             } else {
                 echo "hello world";
 
@@ -878,7 +878,7 @@ class ProfileController extends Controller
                     $file->move(public_path('images'), $file1);
                     array_push($files, $file1);
                 }
-                $files = implode(',', $files);
+                $files = json_encode($files);
 
                 $data->attach_file = $files;
                 $data->attachment_name = $request->attachment_name;

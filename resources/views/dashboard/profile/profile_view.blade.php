@@ -38,11 +38,10 @@
                         <td>
                             <a href="http://127.0.0.1:8000/profile/edit/{{$row->id}}" class="btn btn-block btn-primary">Edit</a>
                         </td>
-                        <td>
-                            <form action="http://127.0.0.1:8000/users/{{$row->id}}" method="POST">
-                                <input type="hidden" name="_method" value="DELETE"> <input type="hidden" name="_token" value="3sid7yJavx5iuEuWWjRmwdJj4bHthQbaRfVtykuT"> <button class="btn btn-block btn-danger">Delete User</button>
-                            </form>
+                        <td>                            
+                            <a href="http://127.0.0.1:8000/profile/delete/{{$row->id}}" class="btn btn-block btn-danger delete ">Delete</a>                           
                         </td>
+                      
                     </tr>
                     @endforeach
                 </tbody>
@@ -50,5 +49,24 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('javascript')
+
+<script>
+
+    $('.delete').click(function(){
+
+        if(confirm("Are you sure you want to delete this profile"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+      })
+</script>
 
 @endsection

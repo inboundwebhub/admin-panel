@@ -149,7 +149,7 @@
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back2">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next2">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button alert" value="Next" id="next2">
                         </div>
 
                     </div>
@@ -202,7 +202,7 @@
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back3">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next3">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button alert" value="Next" id="next3">
                         </div>
 
 
@@ -260,7 +260,7 @@
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back4">
-                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next4">
+                            <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button alert" value="Next" id="next4">
                         </div>
 
                     </div>
@@ -582,19 +582,13 @@
     </div>
 </div>
 
-<!-- @php
-    $url_id = '';
-@endphp
 
-@if( collect(request()->segments())->last() == '')
-    @php
-        $url_id = 1
-    @endphp
-@else
-    @php    
-        $url_id = 2
-    @endphp
-@endif -->
+
+<!-- get personal detail page session id1  -->
+@php
+$id =  session()->get('id1');
+@endphp
+<!-- <input type="text" id='session_id1' value="{{ session()->get('id1') }}" > -->
 
 <!-- Get last part of url -->
 <input type="text" id="url_id" value="{{ collect(request()->segments())->last() }}" hidden>
@@ -603,7 +597,6 @@
 @endsection
 
 @section('javascript')
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js" integrity="sha512-9UR1ynHntZdqHnwXKTaOm1s6V9fExqejKvg5XMawEMToW4sSw+3jtLrYfZPijvnwnnE8Uol1O9BcAskoxgec+g==" crossorigin="anonymous"></script>
 

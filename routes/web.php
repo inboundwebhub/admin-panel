@@ -123,7 +123,9 @@ Route::group(['middleware' => ['get.menu']], function () {
 
             Route::get('/profile/edit/{id}',     'ProfileController@form_update');
 
-            Route::get('/profile/view',     'ProfileViewController@profile_form');
+            Route::get('/profile/delete/{id}',     'ProfileViewController@profile_delete');
+
+            Route::get('/profile/view',     'ProfileViewController@profile_view');
 
          //   Route::get('/profile/{id}/edit',     'ProfileViewController@profile_edit');
 

@@ -63,7 +63,7 @@
 
 
   <body class="c-app">
- 
+      
       @if(URL::previous() == 'http://127.0.0.1:8000/profile/insert')
        
         @php
@@ -95,7 +95,7 @@
 
         </main>
         @include('dashboard.shared.footer')
-      
+         
       </div>
     </div>
 
