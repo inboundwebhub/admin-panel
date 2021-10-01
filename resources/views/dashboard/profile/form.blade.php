@@ -14,7 +14,6 @@
 
 @section('content')
 
-<div id="div1" class="form-group    " style="width:250px;height:30px;display:none;background-color:#90EE90;">data successfully saved.</div>
 
 <div class="col-md-6 mb-4">
     <div class="nav-tabs-boxed">
@@ -87,7 +86,7 @@
                                 <input type="file" name="profile_pic" id="profile_pic" class="input-xlarge ui-wizard-content ">
                             </div>
 
-                            <div class="error"> </div>
+                            <!-- <div class="error"> </div> -->
 
                         </div>
 
