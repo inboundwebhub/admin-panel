@@ -20,31 +20,35 @@ class permissionMiddleware
     {
         //$pm = new PermModel();
         $per = new permission_moduleModel;
-        $perms = $per::All();
+        $exploded_url = explode('/',$request->getpathInfo());
+        $id = $exploded_url[2];
+        //$perms = $per::All();
+        $perms = $per::where('module_id','=',$id)->first();
+    
 
-        foreach($perms as $pm){
-        //dd($pm);
-        dd(explode(',',$pm->allowed_permission));
-        dd(in_array($perm,explode(',',$pm->allowed_permission)));
-          if(in_array($perm,explode(',',$pm->Permission_name))){
+        //dd(explode(',',$perms->allowed_permissions));
+    //   $exploded_perms = explode(',',$pm->allowed_permission);
+         //dd(in_array($perm,explode(',',$perms->allowed_permissions)));
+          if(in_array($perm,explode(',',$perms->allowed_permissions))){
             return $next($request);
         }else{
-            return response('Cannot view this page');
+            return response(view('403'));
         }
-        if(!in_array($perm,explode(',',$pm->Permission_name))){
-            return response('Cannot view this page');
-        }
-        else{
-           return $next($request);
-        }
-        if(!in_array($perm,explode(',',$pm->Permission_name))){
-            return view('Cannot view this page');
-        }
-        else{
-            return $next($request);
-        }
-        }
+        // if(!in_array($perm,explode(',',$perms->allowed_permissions))){
+        //     return response('Cannot view this page');
+        // }
+        // else{
+        //    return $next($request);
+        // }
+        // if(!in_array($perm,explode(',',$perms->allowed_permissions))){
+        //     return view('Cannot view this page');
+        // }
+        // else{
+        //     return $next($request);
+        // }
+        // }
         //return $next($request);
        
     }
 }
+

@@ -51,7 +51,7 @@
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
                            
                               @else
-                              <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary" style="pointer-events: none;">View</a></td>
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary" style="">View</a></td>
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
                               @endif 
                               <td><form action="" method="POST">

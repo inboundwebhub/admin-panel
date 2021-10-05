@@ -184,4 +184,7 @@ Route::group(['middleware' => ['get.menu']], function () {
         Route::group(['middleware'=>['permission:can_view']],function(){
           Route::get('/modules/{id}','ModuleController@read_modules_by_id');
         });
+       Route::group(['middleware'=>['permission:can_edit']],function(){
+          Route::get('/modules/{id}/edit','ModuleController@edit_module_by_id');
+       });
     });
