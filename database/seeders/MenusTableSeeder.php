@@ -145,6 +145,10 @@ class MenusTableSeeder extends Seeder
             $this->insertLink('admin', 'BREAD',                   '/bread');
             $this->insertLink('admin', 'Email',                   '/mail');
         $this->endDropdown();
+        $this->beginDropdown('admin', 'Profile', 'cil-file');
+            $this->insertLink('admin', 'View',                   '/profile/view');
+            $this->insertLink('admin', 'Insert',                 '/profile/insert');
+        $this->endDropdown();
         $this->insertLink('guest', 'Login', '/login', 'cil-account-logout');
         $this->insertLink('guest', 'Register', '/register', 'cil-account-logout');
         $this->insertTitle('user,admin', 'Theme');
@@ -214,7 +218,9 @@ class MenusTableSeeder extends Seeder
         $id = $this->insertLink('admin', 'Edit roles',              '/roles');
         $id = $this->insertLink('admin', 'Media',                   '/media');
         $id = $this->insertLink('admin', 'BREAD',                   '/bread');
+       
         $this->endDropdown();
+
 
         $this->joinAllByTransaction(); ///   <===== Must by use on end of this seeder
     }

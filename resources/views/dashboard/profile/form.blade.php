@@ -10,10 +10,13 @@
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
 @endsection
 
 @section('content')
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <div class="col-md-6 mb-4">
     <div class="nav-tabs-boxed">
@@ -57,13 +60,13 @@
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="col-md-9 col-form-label">
-                                <div class="form-check form-check-inline mr-1">
+                                <div class="form-check form-check-inline mr-1">                                   
                                     <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender">
-                                    <label class="form-check-label" for="inline-radio1">Male</label>
+                                    <label class="form-check-label" for="inline-radio1">Male</label>                                    
                                 </div>
-                                <div class="form-check form-check-inline mr-1">
+                                <div class="form-check form-check-inline mr-1">                                   
                                     <input class="form-check-input" id="inline-radio2" type="radio" value="female" name="gender">
-                                    <label class="form-check-label" for="inline-radio2">Female</label>
+                                    <label class="form-check-label" for="inline-radio2">Female</label>                                                                     
                                 </div>
                             </div>
                         </div>
@@ -110,7 +113,7 @@
                     <!-- General information form [2]   -->
                     <div class="card">
                         <div class="card-header"><strong>General information</strong></div>
-
+                      
                         <div class="form-group">
                             <label for="company">Date of birth</label>
                             <input class="form-control" name='b_date' id="b_date" type="text">
@@ -164,6 +167,10 @@
                     <div class="card">
                         <div class="card-header"><strong>Contact Details (current)</strong></div>
 
+                        <div>
+                            <input type="checkbox" name='repopulate_value1' id="repopulate_value1" > click on the checkbox if you want repopulate your current contact details                            
+                        </div>  <br>
+                      
                         <div class="form-group">
                             <label for="c_address">Current Address</label>
                             <textarea class="form-control" name='c_address' id="c_address" rows="4" cols="50" placeholder="provide your current address information here..."></textarea>
@@ -216,6 +223,10 @@
                     <!--Contact details permanent form [4]    -->
                     <div class="card">
                         <div class="card-header"><strong>Contact Details (permanent)</strong></div>
+
+                        <div>
+                            <input type="checkbox" name='repopulate_value2' id="repopulate_value2" > click on the checkbox if you want repopulate your permanent contact details                            
+                        </div>  <br>
 
                         <div class="form-group">
                             <label for="p_address">Permanent Address</label>
@@ -370,10 +381,10 @@
                         <div class="form-group error"></div>
 
                         <div class="form-group">
-                            <label for="">Known language</label>
-                            <input type="checkbox" name="language[]" class="checkbox" value="gujarati">Gujarati
-                            <input type="checkbox" name="language[]" class="checkbox" value="hindi">Hindi
-                            <input type="checkbox" name="language[]" class="checkbox" value="english">English
+                            <label for="">Known languages: </label>
+                            Gujarati <input type="checkbox" name="language[]" class="checkbox" value="gujarati">
+                            Hindi <input type="checkbox" name="language[]" class="checkbox" value="hindi">
+                            English <input type="checkbox" name="language[]" class="checkbox" value="english">
 
                         </div>
 
@@ -421,7 +432,7 @@
 
                         <div class="form-group">
                             <label for="job_profile">Job Profile</label>
-                            <input class="form-control" name='job_profile' id="job_profile" type="text" placeholder="name of person">
+                            <input class="form-control" name='job_profile' id="job_profile" type="text" >
                         </div>
 
                         <div class="form-group">
@@ -587,7 +598,6 @@
 @php
 $id =  session()->get('id1');
 @endphp
-<!-- <input type="text" id='session_id1' value="{{ session()->get('id1') }}" > -->
 
 <!-- Get last part of url -->
 <input type="text" id="url_id" value="{{ collect(request()->segments())->last() }}" hidden>
@@ -613,5 +623,30 @@ $id =  session()->get('id1');
 <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+<script type="text/javascript">
+    $('input[name="skill"]').keydown(function(){
+     var rel = $('input[name="skill"]').val();
+       
+        $.ajax({
+            url: 'http://127.0.0.1:8000/profile/auto_suggestion',
+            dataType: 'json',
+            delay: 250,
+            processResults: function (data) {
+                return {
+                    results: $.map(data, function (item) {
+                        return {
+                            text: item.name,
+                            
+                        }
+                    })
+                };
+            },
+            cache: true
+        })
+    });
+</script>
 
 @endsection

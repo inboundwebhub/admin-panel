@@ -90,11 +90,11 @@ $array2 = [];
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="col-md-9 col-form-label">
-                                <div class="form-check form-check-inline mr-1">
+                                <div class="form-check form-check-inline mr-1">                                    
                                     <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender" {{$gender1}}>
                                     <label class="form-check-label" for="inline-radio1">Male</label>
                                 </div>
-                                <div class="form-check form-check-inline mr-1">
+                                <div class="form-check form-check-inline mr-1">                                    
                                     <input class="form-check-input" id="inline-radio2" type="radio" value="female" name="gender" {{$gender2}}>
                                     <label class="form-check-label" for="inline-radio2">Female</label>
                                 </div>
@@ -114,10 +114,11 @@ $array2 = [];
                         <div class="form-group">
                             <label for="profile_pic">Profile picture</label>
                             <div class="controls">
-                                <img src="http://hrms.abhicenation.com/uploads/system_users/thumb/me.jpg">
+                                <!-- <img src="http://hrms.abhicenation.com/uploads/system_users/thumb/me.jpg"> -->
 
+                                <img src="{{URL::asset( $row->profile_pic )}}" height="100px" width="100px" />
                                 <input type="file" name="profile_pic" id="profile_pic" class="input-xlarge ui-wizard-content ">
-                                <img src="{{URL::asset( $row->profile_pic )}}" height="50px" width="50px" />
+
 
                             </div>
 
@@ -535,10 +536,10 @@ $array2 = [];
                         @endphp
                         @endif
                         <div class="form-group">
-                            <label for="">Known language</label>
-                            <input type="checkbox" name="language[]" class="checkbox" value="gujarati" {{$language1}}>Gujarati
-                            <input type="checkbox" name="language[]" class="checkbox" value="hindi" {{$language2}}>Hindi
-                            <input type="checkbox" name="language[]" class="checkbox" value="english" {{$language3}}>English
+                            <label for="">Known languages: </label>
+                            Gujarati <input type="checkbox" name="language[]" class="checkbox" value="gujarati" {{$language1}}>
+                            Hindi <input type="checkbox" name="language[]" class="checkbox" value="hindi" {{$language2}}>
+                            English <input type="checkbox" name="language[]" class="checkbox" value="english" {{$language3}}>
 
                         </div>
 
@@ -724,6 +725,12 @@ $array2 = [];
 
                             </div>
 
+                            <div class="form-group"></div>
+
+                            <div class="form-group">
+                                <a class="attachment_add_more"><i class="icon-plus"></i>add more</a>
+                            </div>
+
                             @if($row->attach_file != '')
                             @php
                             $arr = json_decode($row->attach_file);
@@ -731,19 +738,15 @@ $array2 = [];
                             @endphp
                             @for($i = 0; $i < count(json_decode($row->attach_file)); $i++ )
 
-                                {{$arr2[$i]}}
-                                <img src="{{URL::asset($arr[$i]) }}" height="30px" width="30px" />
-
+                                {{$arr2[$i]}}                            
+                                {{$arr[$i]}}
+                                <!-- <img src="{{URL::asset($arr[$i]) }}" style="width:auto;min-height:400px;"> -->
                                 @endfor
                                 @endif
 
 
 
-                                <div class="form-group"></div>
 
-                                <div class="form-group">
-                                    <a class="attachment_add_more"><i class="icon-plus"></i>add more</a>
-                                </div>
 
                         </div>
 

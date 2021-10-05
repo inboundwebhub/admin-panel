@@ -56,4 +56,17 @@ class ProfileViewController extends Controller
         return redirect('http://127.0.0.1:8000/profile/view');
     }
 
+    public function autocompleteSearch(Request $request)
+    {
+    	$movies = [];
+
+       echo "dsd";
+            $search = $request->q;
+            $movies =ProfileQualificationDetails::select("Skills")
+            		->where('Skills', 'LIKE', "%$search%")
+            		->get();
+     
+        return response()->json($movies);
+    }
+
 }

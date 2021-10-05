@@ -149,8 +149,8 @@ Route::group(['middleware' => ['get.menu']], function () {
 
             Route::post('/profile/insert_file_details',     'ProfileController@insert_file_details');
             
-           
-    
+            Route::get('/profile/auto_suggestion',     'ProfileViewController@autocompleteSearch');
+        
    
         });
     });
