@@ -153,10 +153,11 @@ Route::group(['middleware' => ['get.menu']], function () {
 
          Route::post('/moduleC', 'ModuleController@create_mod');
         //  Route::post('/moduleC', 'ModuleController@populate_permissions_table');
-         Route::get('/modules','ModuleController@read_modules');
+       
+        Route::get('/modules','ModuleController@read_modules');
          Route::get('/newmodule','ModuleController@populate_roles');
          Route::get('/modules/{id}','ModuleController@read_modules_by_id');
-         Route::get('/module/{id}/edit','ModuleController@edit_module_by_id');
+         Route::get('/modules/{id}/edit','ModuleController@edit_module_by_id');
 
         Route::get('/newpermission',function(){
             return view('createpermission');
@@ -167,8 +168,20 @@ Route::group(['middleware' => ['get.menu']], function () {
         //  Route::get('/newmodule','ModuleController@populate_permissions');
         
          Route::get('/viewPermissions','ModuleController@viewPermissions');
+         Route::get('/module/deactivated','ModuleController@load_deactivated');
 
 
 
+        });
+        Route::group(['middleware' => ['role:user']], function () {
+        Route::get('/modules','ModuleController@read_modules');
+        Route::get('/modules/{id}','ModuleController@read_modules_by_id');
+        Route::get('/modules/{id}/edit','ModuleController@edit_module_by_id');
+        Route::get('/module/deactivated','ModuleController@load_deactivated');
+        });
+
+
+        Route::group(['middleware'=>['permission:can_view']],function(){
+          Route::get('/modules/{id}','ModuleController@read_modules_by_id');
         });
     });

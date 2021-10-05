@@ -145,6 +145,7 @@ class MenusTableSeeder extends Seeder
             $this->insertLink('admin', 'BREAD',                   '/bread');
             $this->insertLink('admin', 'Email',                   '/mail');
             $this->insertLink('user,admin', 'Modules',        '/modules');
+            
             $this->insertLink('user,admin','Permissions',      '/permissions');
         $this->endDropdown();
         $this->insertLink('guest', 'Login', '/login', 'cil-account-logout');
@@ -199,10 +200,31 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('guest,user,admin', 'Download CoreUI', 'https://coreui.io', 'cil-cloud-download');
         $this->insertLink('guest,user,admin', 'Try CoreUI PRO', 'https://coreui.io/pro/', 'cil-layers');
         $this->insertTitle('user,admin', 'Modules');
-        // $module = new ModuleModel();
-        // foreach($module as $m){
-        //     $this->insertLink($m->AssignedtoRole,$m->module_name,'/modules'.'/'.$m->id); 
-        // }
+        $this->insertLink('user,admin,guest','All Modules','/modules');
+        $module = new ModuleModel();
+        $menuformodule = $module::all();
+        foreach($menuformodule as $m){
+        if($m->Activate_Deactivate == 'Activate'){
+            if($m->AssignedtoRole == 'admin'){
+                $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
+               }
+               elseif($m->AssignedtoRole == 'user'){
+                   $this->insertLink('user',$m->module_name,'/modules'.'/'.$m->id);
+                   $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
+       
+               }
+               elseif($m->AssignedtoRole == 'all'){
+                $this->insertLink('user',$m->module_name,'/modules'.'/'.$m->id);
+                $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
+                $this->insertLink('guest',$m->module_name,'/modules'.'/'.$m->id);
+               } 
+        }
+      else{
+          $this->insertLink('user',$m->module_name,'/module/deactivated');
+          $this->insertLink('admin',$m->module_name,'/module/deactivated');
+      }
+        }
+
         
 
         /* Create top menu */

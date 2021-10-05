@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
+use App\Models\ModuleModel;
 class AccessControlProvider extends ServiceProvider
 {
     /**
@@ -23,7 +25,7 @@ class AccessControlProvider extends ServiceProvider
     public function boot()
     {
           Gate::define('admin',function($user){
-            dd($user->menuroles);
+             dd();
             return $user->menuroles == 'user,admin';
           });
 

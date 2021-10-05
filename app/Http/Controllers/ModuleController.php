@@ -33,10 +33,16 @@ class ModuleController extends Controller
     }
     
     public function read_modules(){
-        $mm = new ModuleModel();
+        // $mm = new ModuleModel();
+        // $modules = $mm::All();
 
-        $modules = $mm::All();
-        return view('modules',compact('modules'));
+        // return view('modules',compact('modules'));
+        $permissions = DB::table('permissions_module')
+        ->join('modules','permissions_module.module_id','=','modules.id')
+        ->select('*')
+        ->get();
+
+        return view('modules',compact('permissions'));
 
 
     }
@@ -76,5 +82,17 @@ class ModuleController extends Controller
         return view('moduleSingleEdit',compact('module_info'));
 
     }
-   
+
+    public function load_deactivated(){
+        return view('deactivated');
+    }
+    
+    public function allow_access_based_on_permission(){
+        $permissions = DB::table('permissions_module')
+        ->join('modules','permissions_module.module_id','=','modules.id')
+        ->select('*')
+        ->get();
+
+        return view('modules',compact('permissions'));
+    }
 }

@@ -30,6 +30,7 @@
 
     <br><br> Select an option to assign this module a particular role
     <br><br> <select name = "roles">
+      <option> {{"all"}} </option>
       @foreach($rolestopush as $role):
         <option> {{$role->name}} </option>
         @endforeach
@@ -39,6 +40,7 @@
       <div style = "display:inline">
       <h2 style="display:inline">Select Permissions</h2>&nbsp&nbsp&nbsp<input type ="button" value="Make Global" class="btn btn-lg btn-primary make-global" style="display:inline">
       </div>
+    
       @foreach($perms as $perm)
       <br><br><input type = "checkbox" name = "permissions[]" class = "check" value = "{{$perm->Permission_name}}"> {{$perm->Permission_name}}
       @endforeach

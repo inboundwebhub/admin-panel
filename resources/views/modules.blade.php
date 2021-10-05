@@ -25,34 +25,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                          @foreach($modules as $module)
+                          @foreach($permissions as $permission)
                             <tr>
-                              <td>{{ $module->module_name }}</td>
-                              <td>{{ $module->module_description }}</td>
-                              @if($module->Activate_Deactivate == 'Activate')
+                              <td>{{ $permission->module_name }}</td>
+                              <td>{{ $permission->module_description }}</td>
+                              @if($permission->Activate_Deactivate == 'Activate')
                               <td>{{ "Activated" }}</td>
                               @else:
                                 <td> {{"Deactivated"}}</td>
                               @endif
-                              @if($module->isGeneralModule == 'True')
+                              @if($permission->isGeneralModule == 'True')
                               <td>{{ "Yes" }}</td>
                               @else:
                                 <td> {{"No"}} </td>
                               @endif
-                              <td> {{$module->AssignedtoRole}} </td>
-                        @can('admin')
-                              <td>  <a href="{{ url('/modules/'.$module->id) }}" class="btn btn-block btn-primary">View</a></td>
-                              <td>  <a href="{{ url('/modules/'.$module->id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
-                        
+                              <td> {{$permission->AssignedtoRole}} </td>
+
+                             
+                              @if($permission->AssignedtoRole == 'admin' and in_array('can_view',explode(',',$permission->allowed_permissions)))
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
+                             
+                              @elseif($permission->AssignedtoRole == 'user' and in_array('can_view',explode(',',$permission->allowed_permissions)))
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
+                           
+                              @else
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary" style="pointer-events: none;">View</a></td>
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
+                              @endif 
                               <td><form action="" method="POST">
                                     @method('DELETE')
                                     @csrf
                                     <button class="btn btn-block btn-danger">Delete User</button>
                                 </form>
-                                @else
-                                <td>  <a href="{{ url('/modules/'.$module->id) }}" class="btn btn-block btn-primary" style = " pointer-events: none;" >View</a></td>
-                              <td>  <a href="{{ url('/modules/'.$module->id.'/edit') }}" class="btn btn-block btn-primary disabled-link" style = " pointer-events: none;">Edit</a></td>
-                                @endcan
+                               
                             </tr>
                               </td>
                           @endforeach
