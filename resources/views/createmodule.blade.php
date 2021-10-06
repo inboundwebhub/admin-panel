@@ -29,7 +29,7 @@
 
 
     <br><br> Select an option to assign this module a particular role
-    <br><br> <select name = "roles">
+    <br><br> <select name = "roles" class = "roles">
       <option> {{"all"}} </option>
       @foreach($rolestopush as $role):
         <option> {{$role->name}} </option>

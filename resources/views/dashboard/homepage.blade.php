@@ -1,7 +1,9 @@
 @extends('dashboard.base')
 
 @section('content')
-
+<div class = "toggle">
+            <button class="toggle_button"> Dark mode </button>
+</div>
           <div class="container-fluid">
             <div class="fade-in">
               <div class="row">
@@ -24,6 +26,7 @@
                     </div>
                   </div>
                 </div>
+        
                 <!-- /.col-->
                 <div class="col-sm-6 col-lg-3">
                   <div class="card text-white bg-info">
@@ -627,6 +630,8 @@
               <!-- /.row-->
             </div>
           </div>
+         
+
 
 @endsection
 
@@ -635,4 +640,6 @@
     <script src="{{ asset('js/Chart.min.js') }}"></script>
     <script src="{{ asset('js/coreui-chartjs.bundle.js') }}"></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src ="{{asset('js/deleteprevention.js')}}"></script>
+    <script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script>
 @endsection
