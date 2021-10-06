@@ -60,13 +60,15 @@ class ProfileViewController extends Controller
     {
     	$movies = [];
 
-       echo "dsd";
-            $search = $request->q;
-            $movies =ProfileQualificationDetails::select("Skills")
-            		->where('Skills', 'LIKE', "%$search%")
+       
+            $search = $request->val;
+           
+            $result =ProfileQualificationDetails::select("Skills")->where('Skills', 'LIKE', "%".$search."%")
             		->get();
-     
-        return response()->json($movies);
+
+            return response()->json($result);
+            
+        // return view("dashboard.profile.form", ['data' => $result]);
     }
 
 }

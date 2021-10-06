@@ -22,9 +22,18 @@ use Redirect;
 
 class ProfileController extends Controller
 {
-    public function profile_form()
-    {
-        return view("dashboard.profile.form");
+    public function profile_form(Request $request)
+    { 
+        $search = $request->val;
+           
+        $result =ProfileQualificationDetails::select("Skills")->where('Skills', 'LIKE', "%".$search."%")
+                ->get();
+    //   foreach($result as $res)
+    //   {
+    //       echo $res->Skills;
+    //   }
+        
+        return view("dashboard.profile.form", ['data' => $result]);
     }
 
     public function form_update()

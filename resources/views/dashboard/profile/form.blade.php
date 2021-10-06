@@ -10,8 +10,8 @@
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+
 
 @endsection
 
@@ -374,10 +374,11 @@
 
                         <div class="form-group">
                             <label for="">Skills</label>
-                            <input type="text" class="form-control" name="skill" id="tags-input" />
+                            <input type="text" class="form-control typeahead" name="skill" id="tags-input" />
 
                         </div>
-
+                        
+                      
                         <div class="form-group error"></div>
 
                         <div class="form-group">
@@ -624,29 +625,8 @@ $id =  session()->get('id1');
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
-<script type="text/javascript">
-    $('input[name="skill"]').keydown(function(){
-     var rel = $('input[name="skill"]').val();
-       
-        $.ajax({
-            url: 'http://127.0.0.1:8000/profile/auto_suggestion',
-            dataType: 'json',
-            delay: 250,
-            processResults: function (data) {
-                return {
-                    results: $.map(data, function (item) {
-                        return {
-                            text: item.name,
-                            
-                        }
-                    })
-                };
-            },
-            cache: true
-        })
-    });
-</script>
+
 
 @endsection
