@@ -104,6 +104,7 @@ $array2 = [];
                         <div class="form-group">
                             <label for="email">Emailid</label>
                             <input class="form-control" name='email' value="{{$row->emailid}}" id="email" type="text" placeholder="Enter your email id">
+                            <div></div>
                         </div>
 
                         <div class="form-group">
@@ -262,6 +263,10 @@ $array2 = [];
                             <input class="form-control" name='skypeid' id="skypeid" type="text" value="{{$row->Company_Skypeid}}">
                         </div>
 
+                        <div>
+                            <input type="checkbox" name='repopulate_value1' id="repopulate_value1" > click on the checkbox if you want repopulate your current contact details                            
+                        </div>  <br>
+
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back3">
                             <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next3">
@@ -319,6 +324,10 @@ $array2 = [];
                             <label for="p_skypeid">Personal Skypeid</label>
                             <input class="form-control" name='p_skypeid' id="p_skypeid" type="text" value="{{$row->Personal_Skypeid}}">
                         </div>
+
+                        <div>
+                            <input type="checkbox" name='repopulate_value2' id="repopulate_value2" > click on the checkbox if you want repopulate your permanent contact details                            
+                        </div>  <br>
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back4">
@@ -550,8 +559,6 @@ $array2 = [];
                             <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button" value="Next" id="next6">
                         </div>
 
-
-
                     </div>
                 </form>
             </div>
@@ -587,7 +594,7 @@ $array2 = [];
 
                         <div class="form-group">
                             <label for="job_profile">Job Profile</label>
-                            <input class="form-control" name='job_profile' id="job_profile" type="text" placeholder="name of person" value="{{$row->Job_Profile}}">
+                            <input class="form-control" name='job_profile' id="job_profile" type="text" value="{{$row->Job_Profile}}">
                         </div>
 
                         <div class="form-group">

@@ -118,39 +118,40 @@ Route::group(['middleware' => ['get.menu']], function () {
             Route::get('/file/copy',        'MediaController@fileCopy')->name('media.file.copy');
         });
 
+        Route::prefix('profile')->group(function () {
 
-            Route::get('/profile/insert',     'ProfileController@profile_form');
+            Route::get('/insert',     'ProfileController@profile_form')->name('profile.insert');
 
-            Route::get('/profile/edit/{id}',     'ProfileController@form_update');
+            Route::get('/edit/{id}',     'ProfileController@form_update')->name('profile.edit');
 
-            Route::get('/profile/delete/{id}',     'ProfileViewController@profile_delete');
+            Route::get('/delete/{id}',     'ProfileViewController@profile_delete')->name('profile.delete');
 
-            Route::get('/profile/view',     'ProfileViewController@profile_view');
+            Route::get('/view',     'ProfileViewController@profile_view')->name('profile.view');
 
-         //   Route::get('/profile/{id}/edit',     'ProfileViewController@profile_edit');
+        //    Route::get('/{id}/edit',     'ProfileViewController@profile_edit');
 
-            Route::post('/profile/insert_personal_details',     'ProfileController@insert_personal_details');
+            Route::post('/insert_personal_details',     'ProfileController@insert_personal_details')->name('insert_personal_details');
 
-            Route::post('/profile/insert_general_details',     'ProfileController@insert_general_details');
+            Route::post('/insert_general_details',     'ProfileController@insert_general_details')->name('insert_general_details');
 
-            Route::post('/profile/insert_contact_details_current',     'ProfileController@insert_contact_details_current');
+            Route::post('/insert_contact_details_current',     'ProfileController@insert_contact_details_current')->name('insert_contact_details_current');
 
-            Route::post('/profile/insert_contact_details_permanent',     'ProfileController@insert_contact_details_permanent');
+            Route::post('/insert_contact_details_permanent',     'ProfileController@insert_contact_details_permanent')->name('insert_contact_details_permanent');
 
-            Route::post('/profile/insert_emergency_contact_details',     'ProfileController@insert_emergency_contact_details');
+            Route::post('/insert_emergency_contact_details',     'ProfileController@insert_emergency_contact_details')->name('insert_emergency_contact_details');
 
-            Route::post('/profile/insert_qualification_details',     'ProfileController@insert_qualification_details');
+            Route::post('/insert_qualification_details',     'ProfileController@insert_qualification_details')->name('insert_qualification_details');
             
-            Route::post('/profile/insert_company_details',     'ProfileController@insert_company_details');
+            Route::post('/insert_company_details',     'ProfileController@insert_company_details')->name('insert_company_details');
 
-            Route::post('/profile/insert_work_experiance',     'ProfileController@insert_work_experiance');
+            Route::post('/insert_work_experiance',     'ProfileController@insert_work_experiance')->name('insert_work_experiance');
 
-            Route::post('/profile/insert_bank_details',     'ProfileController@insert_bank_details');
+            Route::post('/insert_bank_details',     'ProfileController@insert_bank_details')->name('insert_bank_details');
 
-            Route::post('/profile/insert_file_details',     'ProfileController@insert_file_details');
+            Route::post('/insert_file_details',     'ProfileController@insert_file_details')->name('insert_file_details');
             
-            Route::get('/profile/auto_suggestion',     'ProfileViewController@autocompleteSearch');
+            Route::get('/auto_suggestion',     'ProfileViewController@autocompleteSearch')->name('auto_suggestion');
         
-   
         });
     });
+});

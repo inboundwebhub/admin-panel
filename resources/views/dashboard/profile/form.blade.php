@@ -10,7 +10,6 @@
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
 
 
 @endsection
@@ -74,8 +73,9 @@
                         <div class="form-group">
                             <label for="email">Emailid</label>
                             <input class="form-control" name='email' id="email" type="text" placeholder="Enter your email id">
+                            <div></div>
                         </div>
-
+                        
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input class="form-control validate[required,minSize[8]]" name='password' id="password" type="password" placeholder="Enter your password">
@@ -166,11 +166,7 @@
                     <!--Contact details current form [3]    -->
                     <div class="card">
                         <div class="card-header"><strong>Contact Details (current)</strong></div>
-
-                        <div>
-                            <input type="checkbox" name='repopulate_value1' id="repopulate_value1" > click on the checkbox if you want repopulate your current contact details                            
-                        </div>  <br>
-                      
+                     
                         <div class="form-group">
                             <label for="c_address">Current Address</label>
                             <textarea class="form-control" name='c_address' id="c_address" rows="4" cols="50" placeholder="provide your current address information here..."></textarea>
@@ -206,6 +202,10 @@
                             <input class="form-control" name='skypeid' id="skypeid" type="text">
                         </div>
 
+                        <div>
+                            <input type="checkbox" name='repopulate_value1' id="repopulate_value1" > click on the checkbox if you want repopulate your current contact details                            
+                        </div>  <br>
+
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back3">
                             <input type="submit" class="btn btn-primary next ui-wizard-content ui-formwizard-button alert" value="Next" id="next3">
@@ -223,10 +223,6 @@
                     <!--Contact details permanent form [4]    -->
                     <div class="card">
                         <div class="card-header"><strong>Contact Details (permanent)</strong></div>
-
-                        <div>
-                            <input type="checkbox" name='repopulate_value2' id="repopulate_value2" > click on the checkbox if you want repopulate your permanent contact details                            
-                        </div>  <br>
 
                         <div class="form-group">
                             <label for="p_address">Permanent Address</label>
@@ -267,6 +263,10 @@
                             <label for="p_skypeid">Personal Skypeid</label>
                             <input class="form-control" name='p_skypeid' id="p_skypeid" type="text">
                         </div>
+
+                        <div>
+                            <input type="checkbox" name='repopulate_value2' id="repopulate_value2" > click on the checkbox if you want repopulate your permanent contact details                            
+                        </div>  <br>
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back4">
@@ -329,8 +329,8 @@
                             <div class="form-group">
                                 <label for="company">Education Detail</label>
                                 <select id="select_education" name="select_education" class="select_education">
-                                    <option class="form-control" name='education[]' id="10th" value='10th'>10th</option>
-                                    <option class="form-control" name='education[]' id="12th" value='12th'>12th</option>
+                                    <option class="form-control" name='education[]' id="10th" value='ten'>10th</option>
+                                    <option class="form-control" name='education[]' id="12th" value='twelve'>12th</option>
                                     <option class="form-control" name='education[]' id="deploma" value='deploma'>Deploma
                                     </option>
                                     <option class="form-control" name='education[]' id="graduation" value='graduation' selected>Graduation</option>
@@ -624,8 +624,6 @@ $id =  session()->get('id1');
 <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
 
 
