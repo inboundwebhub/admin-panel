@@ -59,13 +59,13 @@
                         <div class="form-group">
                             <label>Gender</label>
                             <div class="col-md-9 col-form-label">
-                                <div class="form-check form-check-inline mr-1">                                   
+                                <div class="form-check form-check-inline mr-1">
                                     <input class="form-check-input" id="inline-radio1" type="radio" value="male" name="gender">
-                                    <label class="form-check-label" for="inline-radio1">Male</label>                                    
+                                    <label class="form-check-label" for="inline-radio1">Male</label>
                                 </div>
-                                <div class="form-check form-check-inline mr-1">                                   
+                                <div class="form-check form-check-inline mr-1">
                                     <input class="form-check-input" id="inline-radio2" type="radio" value="female" name="gender">
-                                    <label class="form-check-label" for="inline-radio2">Female</label>                                                                     
+                                    <label class="form-check-label" for="inline-radio2">Female</label>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                             <input class="form-control" name='email' id="email" type="text" placeholder="Enter your email id">
                             <div></div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input class="form-control validate[required,minSize[8]]" name='password' id="password" type="password" placeholder="Enter your password">
@@ -113,7 +113,7 @@
                     <!-- General information form [2]   -->
                     <div class="card">
                         <div class="card-header"><strong>General information</strong></div>
-                      
+
                         <div class="form-group">
                             <label for="company">Date of birth</label>
                             <input class="form-control" name='b_date' id="b_date" type="text">
@@ -166,7 +166,7 @@
                     <!--Contact details current form [3]    -->
                     <div class="card">
                         <div class="card-header"><strong>Contact Details (current)</strong></div>
-                     
+
                         <div class="form-group">
                             <label for="c_address">Current Address</label>
                             <textarea class="form-control" name='c_address' id="c_address" rows="4" cols="50" placeholder="provide your current address information here..."></textarea>
@@ -203,8 +203,8 @@
                         </div>
 
                         <div>
-                            <input type="checkbox" name='repopulate_value1' id="repopulate_value1" > click on the checkbox if you want repopulate your current contact details                            
-                        </div>  <br>
+                            <input type="checkbox" name='repopulate_value1' id="repopulate_value1"> click on the checkbox if you want repopulate your current contact details
+                        </div> <br>
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back3">
@@ -265,8 +265,8 @@
                         </div>
 
                         <div>
-                            <input type="checkbox" name='repopulate_value2' id="repopulate_value2" > click on the checkbox if you want repopulate your permanent contact details                            
-                        </div>  <br>
+                            <input type="checkbox" name='repopulate_value2' id="repopulate_value2"> click on the checkbox if you want repopulate your permanent contact details
+                        </div> <br>
 
                         <div class="form-actions">
                             <input type="reset" class="btn ui-wizard-content ui-formwizard-button back" value="Back" id="back4">
@@ -377,8 +377,8 @@
                             <input type="text" class="form-control typeahead" name="skill" id="tags-input" />
 
                         </div>
-                        
-                      
+
+
                         <div class="form-group error"></div>
 
                         <div class="form-group">
@@ -433,7 +433,7 @@
 
                         <div class="form-group">
                             <label for="job_profile">Job Profile</label>
-                            <input class="form-control" name='job_profile' id="job_profile" type="text" >
+                            <input class="form-control" name='job_profile' id="job_profile" type="text">
                         </div>
 
                         <div class="form-group">
@@ -546,31 +546,35 @@
 
                             <div class="attachment_details">
 
-                                <select id="attach_select" class="attach_select">
-                                    <option>--Select--</option>
-                                    <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
-                                    </option>
-                                    <option class="form-control" name='Licence' id="Licence" value='Licence'>Licence
-                                    </option>
-                                    <option class="form-control" name='Adharcard' id="Adharcard" value='Adharcard'>
-                                        Adharcard</option>
-                                    <option class="form-control" name='Passport' id="Passport" value='Passport'>Passport
-                                    </option>
-                                    <option class="form-control" name='Votercard' id="Votercard" value='Votercard'>
-                                        Votercard</option>
+                                <div>
+                                    <select id="attach_select" class="attach_select">
+                                        <option>--Select--</option>
+                                        <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
+                                        </option>
+                                        <option class="form-control" name='Licence' id="Licence" value='Licence'>Licence
+                                        </option>
+                                        <option class="form-control" name='Adharcard' id="Adharcard" value='Adharcard'>
+                                            Adharcard</option>
+                                        <option class="form-control" name='Passport' id="Passport" value='Passport'>Passport
+                                        </option>
+                                        <option class="form-control" name='Votercard' id="Votercard" value='Votercard'>
+                                            Votercard</option>
 
-                                </select>
+                                    </select>
 
-                                <input type="file" name="attach_file[]" class="attach_file" id="attach_file">
+                                    <input type="file" name="attach_file" class="attach_file" id="attach_file">
 
-
+                                    <div> <a href='javascript:void(0)' class='attachment_delete'>delete</a></div>
+                                </div>
                             </div>
+
+
 
                             <div class="append_attachment">`
 
                             </div>
 
-                            <div class="form-group"></div>
+                            <!-- <div class="form-group"></div> -->
 
                             <div class="form-group">
                                 <a class="attachment_add_more"><i class="icon-plus"></i>add more</a>
@@ -597,7 +601,7 @@
 
 <!-- get personal detail page session id1  -->
 @php
-$id =  session()->get('id1');
+$id = session()->get('id1');
 @endphp
 
 <!-- Get last part of url -->
