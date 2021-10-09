@@ -15,10 +15,10 @@ class CreateProfileWorkExperience extends Migration
     {
         Schema::create('profile_work_experience', function (Blueprint $table) {
             $table->id();
-            $table->string('Duration');
-            $table->string('Company_Name');
-            $table->string('Company_Number');
-            $table->string('Company_Address');
+            $table->string('Duration')->nullable();
+            $table->string('Company_Name')->nullable();
+            $table->string('Company_Number')->nullable();
+            $table->string('Company_Address')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');            
 

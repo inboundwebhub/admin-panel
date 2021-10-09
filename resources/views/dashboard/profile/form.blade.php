@@ -546,27 +546,25 @@
 
                             <div class="attachment_details">
 
-                                <div>
-                                    <select id="attach_select" class="attach_select">
-                                        <option>--Select--</option>
-                                        <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
-                                        </option>
-                                        <option class="form-control" name='Licence' id="Licence" value='Licence'>Licence
-                                        </option>
-                                        <option class="form-control" name='Adharcard' id="Adharcard" value='Adharcard'>
-                                            Adharcard</option>
-                                        <option class="form-control" name='Passport' id="Passport" value='Passport'>Passport
-                                        </option>
-                                        <option class="form-control" name='Votercard' id="Votercard" value='Votercard'>
-                                            Votercard</option>
+                                <select id="attach_select" class='attach_select'>
+                                    <option selected>--Select--</option>
+                                    <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
+                                    </option>
+                                    <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
+                                    </option>
+                                    <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
+                                        Adharcard</option>
+                                    <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
+                                    </option>
+                                    <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
+                                        Votercard</option>
 
-                                    </select>
+                                </select>
 
-                                    <input type="file" name="attach_file" class="attach_file" id="attach_file">
+                                <input type="file" name="attach_file[]" class="attach_file" id="attach_file">
 
-                                    <div> <a href='javascript:void(0)' class='attachment_delete'>delete</a></div>
-                                </div>
                             </div>
+
 
 
 

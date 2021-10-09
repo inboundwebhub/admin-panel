@@ -15,12 +15,12 @@ class CreateProfileCompanyDetails extends Migration
     {
         Schema::create('profile_company_details', function (Blueprint $table) {
             $table->id();
-            $table->string('Date_of_joining');
-            $table->string('Employee_id');
-            $table->string('Department');
-            $table->string('Designation');
-            $table->string('Job_Profile');
-            $table->string('Role');
+            $table->string('Date_of_joining')->nullable();
+            $table->string('Employee_id')->nullable();
+            $table->string('Department')->nullable();
+            $table->string('Designation')->nullable();
+            $table->string('Job_Profile')->nullable();
+            $table->string('Role')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
            

@@ -15,9 +15,9 @@ class CreateProfileBankDetail extends Migration
     {
         Schema::create('profile_bank_detail', function (Blueprint $table) {
             $table->id();
-            $table->string('Bank_Name');
-            $table->string('Branch_Name');
-            $table->bigInteger('Account_number');  
+            $table->string('Bank_Name')->nullable();
+            $table->string('Branch_Name')->nullable();
+            $table->bigInteger('Account_number')->unsigned()->nullable();;  
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
 
@@ -33,5 +33,6 @@ class CreateProfileBankDetail extends Migration
     public function down()
     {
         Schema::dropIfExists('profile_bank_detail');
+
     }
 }

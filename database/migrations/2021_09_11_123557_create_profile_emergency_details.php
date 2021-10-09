@@ -15,10 +15,10 @@ class CreateProfileEmergencyDetails extends Migration
     {
         Schema::create('profile_emergency_details', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->string('Relation');
-            $table->bigInteger('Contact_number');
-            $table->string('Address');           
+            $table->string('Name')->nullable();
+            $table->string('Relation')->nullable();
+            $table->bigInteger('Contact_number')->nullable();
+            $table->string('Address')->nullable();           
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');
            

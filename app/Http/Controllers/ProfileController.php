@@ -71,7 +71,7 @@ class ProfileController extends Controller
     }
 
     public function insert_personal_details(Request $request)
-    {
+    {       
 
         $url_id = $request->url_id;
 
@@ -101,7 +101,7 @@ class ProfileController extends Controller
             }
             if (count($email) == 0 && empty($id)) {
                 if (empty($id) || count($data) == 0) {
-                    // echo "helo";  
+
                     $data = new ProfilePersonalDetails;
                     $data->first_name =  $request->f_name;
                     $data->middle_name =  $request->m_name;
@@ -134,7 +134,7 @@ class ProfileController extends Controller
             // Insert File
 
             $id = $request->session()->get('id10');
-            echo $id;
+
             $session_id1 = $request->session()->get('id1');
             if ($session_id1 == '') {
                 $session_id1 == '';
@@ -142,36 +142,41 @@ class ProfileController extends Controller
 
             $data = ProfileFileDetail::Where('id', $id)->get();
 
-            if (empty($id) || count($data) == 0) {
-                echo "hello world";
-                $data = new ProfileFileDetail;
-                $data->profile_pic = $request->file('profile_pic')->store('images');
+            if($request->file('profile_pic') != '')
+            {
+                if (empty($id) || count($data) == 0) {
 
-                $data->attach_file = '';
-                $data->attachment_name = '';
-                $data->user_id =  $session_id1;
+                    $data = new ProfileFileDetail;
+                    $data->profile_pic = $request->file('profile_pic')->store('images');
 
-                $data->save();
-                $id = $data->id;
-                $request->session()->put('id10', $id);
+                    $data->attach_file = '';
+                    $data->attachment_name = '';
+                    $data->user_id =  $session_id1;
 
-                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+                    $data->save();
+                    $id = $data->id;
+                    $request->session()->put('id10', $id);
 
-                //     array_push($array,$id);
-                //    print_r($array);
+
+                    $request->profile_pic->store('images', ['disk' => 'public']);   
+
+                 
+                }
+
+                if (!empty($id) && !empty($data)) {
+
+                    $data = ProfileFileDetail::find($id);
+
+                    $data->profile_pic = $request->file('profile_pic')->store('images');
+                  
+                    // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+                
+                    $request->profile_pic->store('images', ['disk' => 'public']);   
+
+                    $data->save();
+                }
             }
-
-            if (!empty($id) && !empty($data)) {
-
-                $data = ProfileFileDetail::find($id);
-
-                $data->profile_pic = $request->file('profile_pic')->store('images');
-                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
-
-                // $data->attach_file = '';
-
-                $data->save();
-            }
+            
         } else {
             $email = ProfilePersonalDetails::Where('emailid', $request->email)->get();
             $personal_details_id = '';
@@ -203,25 +208,34 @@ class ProfileController extends Controller
             $check_data =  ProfileFileDetail::Where('user_id', $url_id)->get();
             $length = count($check_data);
 
-            if ($length == 0) {
-                echo "hello world";
-                $data = new ProfileFileDetail;
-                $data->profile_pic = $request->file('profile_pic')->store('images');
+            if($request->file('profile_pic') != '')
+            {
+                if ($length == 0) {
+                    
+                    $data = new ProfileFileDetail;
+                    $data->profile_pic = $request->file('profile_pic')->store('images');
 
-                $data->attach_file = '';
-                $data->attachment_name = '';
-                $data->user_id =  $url_id;
+                    $data->attach_file = '';
+                    $data->attachment_name = '';
+                    $data->user_id =  $url_id;
 
-                $data->save();
-                $id = $data->id;
-                $request->session()->put('id10', $id);
+                    $data->save();
+                    $id = $data->id;
+                    $request->session()->put('id10', $id);
 
-                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
-            } else {
+                    // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
 
-                ProfileFileDetail::where('user_id', $url_id)->update(["profile_pic" => $request->file('profile_pic')->store('images')]);
+                    $request->profile_pic->store('images', ['disk' => 'public']);   
 
-                $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+                } else {
+
+                    ProfileFileDetail::where('user_id', $url_id)->update(["profile_pic" => $request->file('profile_pic')->store('images')]);
+
+                    // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
+
+                    $request->profile_pic->store('images', ['disk' => 'public']);   
+
+                }
             }
         }
     }
@@ -235,16 +249,15 @@ class ProfileController extends Controller
 
             if ($request->session()->get('id1') == '') {
                 echo 'insert first page.';
+                die;
             }
 
             $id = $request->session()->get('id2');
-            echo $id;
-
-
+          
             $data = ProfileGeneralInformation::Where('id', $id)->get();
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileGeneralInformation;
 
                 $data->Date_of_birth =  $request->b_date;
@@ -286,7 +299,7 @@ class ProfileController extends Controller
                     'Passport_number' => $request->pass_num, 'Bio' => $request->bio
                 ]);
             } else {
-                echo "hello world";
+
                 $data = new ProfileGeneralInformation;
 
                 $data->Date_of_birth =  $request->b_date;
@@ -306,15 +319,19 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
-            echo "hello";
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
+
 
             $id = $request->session()->get('id3');
-            echo $id;
 
             $data = ProfileCurrentContact::Where('id', $id)->get();
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileCurrentContact;
 
                 $data->Current_Address =  $request->c_address;
@@ -358,7 +375,7 @@ class ProfileController extends Controller
                     "Personal_Contact_number" => $request->c_number, "Local_Contact_number" => $request->l_numbe, "Company_Skypeid" => $request->skypeid
                 ]);
             } else {
-                echo "hello world";
+
                 $data = new ProfileCurrentContact;
 
                 $data->Current_Address =  $request->c_address;
@@ -380,11 +397,25 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
+
             $id = $request->session()->get('id4');
             // echo $id;
 
             $data = ProfilePermanentContact::Where('id', $id)->get();
-            $email = ProfilePermanentContact::Where('Personal_Emailid', $request->p_emailid)->get();
+            
+            $email = [];
+
+            if($request->p_emailid != '')
+            {
+                $email = ProfilePermanentContact::Where('Personal_Emailid', $request->p_emailid)->get();
+         
+            }
+
             $contact_details_id = '';
             foreach ($email as $data) {
                 $contact_details_id = $data->id;
@@ -392,7 +423,7 @@ class ProfileController extends Controller
 
             if (count($email) == 0 && empty($id)) {
                 if (empty($id) || count($data) == 0) {
-                    echo "hello world";
+
                     $data = new ProfilePermanentContact;
 
                     $data->Permanent_Address =  $request->p_address;
@@ -428,7 +459,9 @@ class ProfileController extends Controller
                     $data->save();
                 }
             } else {
+               
                 echo "entered email is already exists. please enter other email.";
+               
             }
         } else {
             $check_data =  ProfilePermanentContact::Where('user_id', $url_id)->get();
@@ -452,7 +485,6 @@ class ProfileController extends Controller
                 }
             } elseif (count($email) == 0 && $length == 0) {
                 if ($length == 0) {
-                    echo "hello world";
 
                     $data = new ProfilePermanentContact;
 
@@ -469,7 +501,9 @@ class ProfileController extends Controller
                     $data->save();
                 }
             } else {
+                
                 echo "entered email is already exists. please enter other email.";
+                
             }
         }
     }
@@ -479,13 +513,18 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
+
             $id = $request->session()->get('id5');
-            echo $id;
 
             $data = ProfileEmergencyContact::Where('id', $id)->get();
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileEmergencyContact;
 
                 $data->Name =  $request->name;
@@ -521,7 +560,7 @@ class ProfileController extends Controller
                     "Relation" => $request->relation, 'Contact_number' => $request->number, "Address" => $request->address,
                 ]);
             } else {
-                echo "hello world";
+
                 $data = new ProfileEmergencyContact;
 
                 $data->Name =  $request->name;
@@ -540,15 +579,19 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
-            echo "hello world";
+
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
 
             $id = $request->session()->get('id6');
-            echo $id;
 
             $data = ProfileQualificationDetails::Where('id', $id)->get();
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileQualificationDetails;
 
                 $data->Education_Detail =  $request->select;
@@ -592,7 +635,7 @@ class ProfileController extends Controller
                     "Skills" => $request->tags, "Known_language" => $request->language,
                 ]);
             } else {
-                echo "hello world";
+
                 $data = new ProfileQualificationDetails;
 
                 $data->Education_Detail =  $request->select;
@@ -613,14 +656,19 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
+
             $id = $request->session()->get('id7');
-            echo $id;
-            echo "heelo";
+          
 
             $data = ProfileCompanyDetails::Where('id', $id)->get();
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileCompanyDetails;
                 $data->Date_of_joining =  $request->joining_date;
                 $data->Employee_id =  $request->employee_id;
@@ -679,13 +727,18 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
+
             $id = $request->session()->get('id8');
-            echo $id;
 
             $data = ProfileWorkExperiance::Where('id', $id)->get();
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileWorkExperiance;
                 $data->Duration =  $request->duration;
                 $data->Company_Name =  $request->c_name;
@@ -721,7 +774,7 @@ class ProfileController extends Controller
                     "Company_Name" => $request->c_name, 'Company_Number' => $request->c_number, "Company_Address" => $request->c_address
                 ]);
             } else {
-                echo "hello world";
+
                 $data = new ProfileWorkExperiance;
                 $data->Duration =  $request->duration;
                 $data->Company_Name =  $request->c_name;
@@ -739,14 +792,19 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
+
             $id = $request->session()->get('id9');
-            echo $id;
 
             $data = ProfileBankDetail::Where('id', $id)->get();
 
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileBankDetail;
                 $data->Bank_Name =  $request->bank_name;
                 $data->Branch_Name =  $request->branch_name;
@@ -780,7 +838,7 @@ class ProfileController extends Controller
                     "Branch_Name" => $request->branch_name, 'Account_number' => $request->account_number
                 ]);
             } else {
-                echo "hello world";
+
                 $data = new ProfileBankDetail;
                 $data->Bank_Name =  $request->bank_name;
                 $data->Branch_Name =  $request->branch_name;
@@ -797,21 +855,32 @@ class ProfileController extends Controller
     {
         $url_id = $request->url_id;
         if ($url_id == 'insert') {
+            
+
+            if ($request->session()->get('id1') == '') {
+                echo 'insert first page.';
+                die;
+            }
+
+            if($request->file('attach_file') == '')
+            {
+                die;
+            }
 
             $id = $request->session()->get('id10');
-            echo $id;
 
             $data = ProfileFileDetail::Where('id', $id)->get();
 
             if (empty($id) || count($data) == 0) {
-                echo "hello world";
+
                 $data = new ProfileFileDetail;
                 $data->profile_pic = '';
 
                 $files = [];
                 foreach ($request->file('attach_file') as $file) {
                     $file1 = $file->store('images');
-                    $file->move(public_path('images'), $file1);
+                    $file->store('images', ['disk' => 'public']);   
+
                     array_push($files, $file1);
                 }
                 $files = json_encode($files);
@@ -837,9 +906,10 @@ class ProfileController extends Controller
 
                 $files = [];
                 foreach ($request->file('attach_file') as $file) {
-                    echo "hii";
+
                     $file1 = $file->store('images');
-                    $file->move(public_path('images'), $file1);
+                    $file->store('images', ['disk' => 'public']);   
+
                     array_push($files, $file1);
                 }
                 $files = json_encode($files);
@@ -849,6 +919,12 @@ class ProfileController extends Controller
                 $data->save();
             }
         } else {
+
+            if($request->file('attach_file') == '')
+            {
+                die;
+            }
+
             $check_data =  ProfileFileDetail::Where('user_id', $url_id)->get();
             $length = count($check_data);
 
@@ -857,10 +933,11 @@ class ProfileController extends Controller
 
                 $files = [];
                 foreach ($request->file('attach_file') as $file) {
-                    echo "hii";
+
                     $name = time() . rand(1, 100) . '.' . $file->extension();
                     $file1 = $file->store('images');
-                    $file->move(public_path('images'), $file1);
+                    $file->store('images', ['disk' => 'public']); 
+                    
                     array_push($files, $file1);
                 }
 
@@ -875,7 +952,6 @@ class ProfileController extends Controller
                 // $request->profile_pic->move(public_path('images'), $request->file('profile_pic')->store('images'));
 
             } else {
-                echo "hello world";
 
                 $data = new ProfileFileDetail;
                 $data->profile_pic = '';
@@ -884,7 +960,8 @@ class ProfileController extends Controller
                 $files = [];
                 foreach ($request->file('attach_file') as $file) {
                     $file1 = $file->store('images');
-                    $file->move(public_path('images'), $file1);
+                    $file->store('images', ['disk' => 'public']); 
+                    
                     array_push($files, $file1);
                 }
                 $files = json_encode($files);
