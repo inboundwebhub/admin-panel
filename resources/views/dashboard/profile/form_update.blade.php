@@ -116,8 +116,15 @@ $array2 = [];
                             <label for="profile_pic">Profile picture</label>
                             <div class="controls">
                                 <!-- <img src="http://hrms.abhicenation.com/uploads/system_users/thumb/me.jpg"> -->
+                                @if($row->profile_pic != '')
+                                    <img src="{{URL::asset('public/'. $row->profile_pic )}}" height="100px" width="100px" />
+                                    @else
+                                    <img src="http://hrms.abhicenation.com/uploads/system_users/thumb/me.jpg">
 
-                                <img src="{{URL::asset( $row->profile_pic )}}" height="100px" width="100px" />
+                                @endif
+                                <!-- @if($row->profile_pic == '')
+                                <img src="http://hrms.abhicenation.com/uploads/system_users/thumb/me.jpg">
+                                @endif -->
                                 <input type="file" name="profile_pic" id="profile_pic" class="input-xlarge ui-wizard-content ">
 
 
@@ -708,24 +715,25 @@ $array2 = [];
                             <label for="company">Attachments</label>
 
                             <div class="attachment_details">
+                                <div>     
+                                    <select id="attach_select" class='attach_select'>
+                                        <option selected>--Select--</option>
+                                        <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
+                                        </option>
+                                        <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
+                                        </option>
+                                        <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
+                                            Adharcard</option>
+                                        <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
+                                        </option>
+                                        <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
+                                            Votercard</option>
 
-                                <select id="attach_select" class='attach_select'>
-                                    <option selected>--Select--</option>
-                                    <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
-                                    </option>
-                                    <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
-                                    </option>
-                                    <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
-                                        Adharcard</option>
-                                    <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
-                                    </option>
-                                    <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
-                                        Votercard</option>
+                                    </select>
 
-                                </select>
-
-                                <input type="file" name="attach_file[]" class="attach_file" id="attach_file">
-
+                                    <input type="file" name="attach_file[]" class="form-control" id="attach_file">
+                                </div>
+                                
                             </div>
 
                             <div class="append_attachment">`

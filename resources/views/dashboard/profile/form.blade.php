@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
 
+<link rel="stylesheet" href="{{URL::asset('css/fm.tagator.jquery.css')}}">
 
 @endsection
 
@@ -374,8 +375,8 @@
 
                         <div class="form-group">
                             <label for="">Skills</label>
-                            <input type="text" class="form-control typeahead" name="skill" id="tags-input" />
-
+                            <!-- <input type="text" class="form-control typeahead" name="skill" id="tags-input" /> -->
+                            <input id="example" name="example" value="jQuery,Script,Net" placeholder="Please input some tags">
                         </div>
 
 
@@ -480,7 +481,6 @@
                                 <label for="company_address">Company Address</label>
                                 <textarea class="form-control company_address" name='company_address[]' id="company_address" rows="4" cols="50" placeholder="provide your previous company address information here..."></textarea>
                             </div>
-
                         </div>
 
                         <div class="experiance_add_details">
@@ -545,24 +545,27 @@
                             <label for="company">Attachments</label>
 
                             <div class="attachment_details">
+                              
+                                   
+                                        <select id=" attach_select" class='attach_select'>
+                                            <option selected>--Select--</option>
+                                            <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
+                                            </option>
+                                            <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
+                                            </option>
+                                            <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
+                                                Adharcard</option>
+                                            <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
+                                            </option>
+                                            <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
+                                                Votercard</option>
 
-                                <select id="attach_select" class='attach_select'>
-                                    <option selected>--Select--</option>
-                                    <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
-                                    </option>
-                                    <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
-                                    </option>
-                                    <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
-                                        Adharcard</option>
-                                    <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
-                                    </option>
-                                    <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
-                                        Votercard</option>
+                                        </select>
+                                                                  
+                                        <input class="" type="file" name="attach_file[]" id="attach_file">
+                                                             
 
-                                </select>
-
-                                <input type="file" name="attach_file[]" class="attach_file" id="attach_file">
-
+                      
                             </div>
 
 
@@ -626,6 +629,10 @@ $id = session()->get('id1');
 <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+<script src="{{asset('js/fm.tagator.jquery.js')}}"></script>
+
 
 
 

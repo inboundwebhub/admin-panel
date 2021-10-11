@@ -66,7 +66,11 @@ class ProfileViewController extends Controller
             $result =ProfileQualificationDetails::select("Skills")->where('Skills', 'LIKE', "%".$search."%")
             		->get();
 
-            return response()->json($result);
+            foreach($result as $res)
+            {
+                echo $res->Skills;
+            }
+            // return response()->json($result);
             
         // return view("dashboard.profile.form", ['data' => $result]);
     }

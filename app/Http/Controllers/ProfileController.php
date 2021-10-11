@@ -16,8 +16,10 @@ use App\Models\ProfileWorkExperiance;
 use App\Models\ProfileBankDetail;
 use App\Models\ProfileFileDetail;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+
 use Redirect;
 
 class ProfileController extends Controller
@@ -71,8 +73,21 @@ class ProfileController extends Controller
     }
 
     public function insert_personal_details(Request $request)
-    {       
-
+    {   
+        // Schema::disableForeignKeyConstraints();
+        // ProfilePersonalDetails::truncate();
+        // ProfileGeneralInformation::truncate();
+        // ProfileCurrentContact::truncate();
+        // ProfilePermanentContact::truncate();
+        // ProfileEmergencyContact::truncate();
+        // ProfileQualificationDetails::truncate();
+        // ProfileCompanyDetails::truncate();
+        // ProfileWorkExperiance::truncate();
+        // ProfileBankDetail::truncate();
+        // ProfileFileDetail::truncate();
+        // Schema::enableForeignKeyConstraints();
+        // die;
+        
         $url_id = $request->url_id;
 
         if ($url_id == 'insert') {
@@ -87,7 +102,7 @@ class ProfileController extends Controller
             session()->forget('id8');
             session()->forget('id9');
             session()->forget('id10');
-
+            
             $id = $request->session()->get('id1');
 
             $file_data = ProfileFileDetail::Where('id', $id)->get();
@@ -108,7 +123,7 @@ class ProfileController extends Controller
                     $data->last_name =  $request->l_name;
                     $data->gender =  $request->gender;
                     $data->emailid =  $request->email;
-                    $data->password =  $request->password;
+                    $data->password =  Hash::make($request->password);
 
                     $data->save();
                     $id =  $data->id;
@@ -123,7 +138,7 @@ class ProfileController extends Controller
                     $data->last_name =  $request->l_name;
                     $data->gender =  $request->gender;
                     $data->emailid =  $request->email;
-                    $data->password =  $request->password;
+                    $data->password =  Hash::make($request->password);
 
                     $data->save();
                 }
@@ -191,7 +206,7 @@ class ProfileController extends Controller
                 $data->last_name =  $request->l_name;
                 $data->gender =  $request->gender;
                 $data->emailid =  $request->email;
-                $data->password =  $request->password;
+                $data->password = Hash::make($request->password);
 
                 $data->save();
             } else {
@@ -246,7 +261,7 @@ class ProfileController extends Controller
         $url_id = $request->url_id;
 
         if ($url_id == 'insert') {
-
+            
             if ($request->session()->get('id1') == '') {
                 echo 'insert first page.';
                 die;
