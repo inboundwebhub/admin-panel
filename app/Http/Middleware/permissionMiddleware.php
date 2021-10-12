@@ -32,8 +32,8 @@ class permissionMiddleware
           if(in_array($perm,explode(',',$perms->allowed_permissions))){
             return $next($request);
         }else{
-           // return response(view('403'));
-           return abort('403');
+           return response(view('403'));
+        //    return abort('403');
         }
         // if(!in_array($perm,explode(',',$perms->allowed_permissions))){
         //     return response('Cannot view this page');
