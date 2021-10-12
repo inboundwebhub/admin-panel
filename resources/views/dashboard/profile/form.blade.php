@@ -398,7 +398,6 @@
                         </div>
 
 
-
                     </div>
                 </form>
             </div>
@@ -545,8 +544,9 @@
                             <label for="company">Attachments</label>
 
                             <div class="attachment_details">
-                              
-                                   
+
+                                <div class="form-group">
+                                    <div class="form-group">
                                         <select id=" attach_select" class='attach_select'>
                                             <option selected>--Select--</option>
                                             <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
@@ -561,14 +561,15 @@
                                                 Votercard</option>
 
                                         </select>
-                                                                  
+
                                         <input class="" type="file" name="attach_file[]" id="attach_file">
-                                                             
+                                        <div class='form-group'><a href='javascript:void(0)' class='attachment_delete ' id="attachment_delete" style="display:none;">delete</a></div>
+                                    </div>
 
-                      
+                                    
+                                </div>
+
                             </div>
-
-
 
 
                             <div class="append_attachment">`
@@ -632,8 +633,6 @@ $id = session()->get('id1');
 
 
 <script src="{{asset('js/fm.tagator.jquery.js')}}"></script>
-
-
 
 
 @endsection

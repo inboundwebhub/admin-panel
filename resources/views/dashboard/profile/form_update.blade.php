@@ -10,6 +10,9 @@
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
 
+<link rel="stylesheet" href="{{URL::asset('css/fm.tagator.jquery.css')}}">
+
+
 @endsection
 
 @section('content')
@@ -503,7 +506,9 @@ $array2 = [];
 
                         <div class="form-group">
                             <label for="">Skills</label>
-                            <input type="text" class="form-control" name="skill" id="tags-input" value="{{$row->Skills}}" />
+                            <!-- <input name="skill" class="example" value="jQuery,Script,Net" /> -->
+                          
+                            <input id="example" name="example" value="{{$row->Skills}}" placeholder="Please input some tags">
 
                         </div>
 
@@ -714,26 +719,33 @@ $array2 = [];
                         <div class="form-group">
                             <label for="company">Attachments</label>
 
+                          
                             <div class="attachment_details">
-                                <div>     
-                                    <select id="attach_select" class='attach_select'>
-                                        <option selected>--Select--</option>
-                                        <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
-                                        </option>
-                                        <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
-                                        </option>
-                                        <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
-                                            Adharcard</option>
-                                        <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
-                                        </option>
-                                        <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
-                                            Votercard</option>
 
-                                    </select>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <select id=" attach_select" class='attach_select'>
+                                            <option selected>--Select--</option>
+                                            <option class="form-control" name='Pancard' id="Pancard" value='Pancard'>Pancard
+                                            </option>
+                                            <option class="form-control" name='Licence[]' id="Licence" value='Licence'>Licence
+                                            </option>
+                                            <option class="form-control" name='Adharcard[]' id="Adharcard" value='Adharcard'>
+                                                Adharcard</option>
+                                            <option class="form-control" name='Passport[]' id="Passport" value='Passport'>Passport
+                                            </option>
+                                            <option class="form-control" name='Votercard[]' id="Votercard" value='Votercard'>
+                                                Votercard</option>
 
-                                    <input type="file" name="attach_file[]" class="form-control" id="attach_file">
+                                        </select>
+
+                                        <input class="" type="file" name="attach_file[]" id="attach_file">
+                                        <div class='form-group'><a href='javascript:void(0)' class='attachment_delete ' id="attachment_delete" style="display:none;">delete</a></div>
+                                    </div>
+
+                                    
                                 </div>
-                                
+
                             </div>
 
                             <div class="append_attachment">`
@@ -823,5 +835,8 @@ $array2 = [];
 <script src="node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="{{asset('js/fm.tagator.jquery.js')}}"></script>
+
 
 @endsection

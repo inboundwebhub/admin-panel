@@ -68,7 +68,7 @@ class ProfileViewController extends Controller
 
             foreach($result as $res)
             {
-                echo $res->Skills;
+                echo $res->Skills.',';
             }
             // return response()->json($result);
             
