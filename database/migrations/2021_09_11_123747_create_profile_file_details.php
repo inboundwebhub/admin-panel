@@ -15,8 +15,8 @@ class CreateProfileFileDetails extends Migration
     {
         Schema::create('profile_file_details', function (Blueprint $table) {
             $table->id();
-            $table->string('profile_pic')->nullable();
-            $table->string('attach_file')->nullable();
+            $table->longText('profile_pic')->nullable();
+            $table->longText('attach_file')->nullable();
             $table->string('attachment_name')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('profile_personal_details')->onDelete('cascade')->onUpdate('cascade');

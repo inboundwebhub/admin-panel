@@ -765,14 +765,11 @@ $array2 = [];
                             @endphp
                             @for($i = 0; $i < count(json_decode($row->attach_file)); $i++ )
 
-                                {{$arr2[$i]}}                            
-                                {{$arr[$i]}}
+                                {{$arr2[$i]}}                           
+                                {{$arr[$i]}} <br>
                                 <!-- <img src="{{URL::asset($arr[$i]) }}" style="width:auto;min-height:400px;"> -->
                                 @endfor
                                 @endif
-
-
-
 
 
                         </div>
