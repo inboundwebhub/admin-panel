@@ -65,18 +65,18 @@ class MenusTableSeeder extends Seeder
         $this->sequence++;
         $lastId = DB::getPdo()->lastInsertId();
         $this->join($roles, $lastId);
-        $permission = Permission::where('name', '=', $name)->get();
-        if(empty($permission)){
-            $permission = Permission::create(['name' => 'visit ' . $name]);
-        }
-        $roles = explode(',', $roles);
-        if(in_array('user', $roles)){
-            $this->userRole->givePermissionTo($permission);
-        }
-        if(in_array('admin', $roles)){
-            $this->adminRole->givePermissionTo($permission);
-        }
-        return $lastId;
+        // $permission = Permission::where('name', '=', $name)->get();
+        // if(empty($permission)){
+        //     $permission = Permission::create(['name' => 'visit ' . $name]);
+        // }
+        // $roles = explode(',', $roles);
+        // if(in_array('user', $roles)){
+        //     $this->userRole->givePermissionTo($permission);
+        // }
+        // if(in_array('admin', $roles)){
+        //     $this->adminRole->givePermissionTo($permission);
+        // }
+        // return $lastId;
     }
 
     public function insertTitle($roles, $name){
@@ -151,15 +151,18 @@ class MenusTableSeeder extends Seeder
         $this->insertLink('guest', 'Login', '/login', 'cil-account-logout');
         $this->insertLink('guest', 'Register', '/register', 'cil-account-logout');
         
-        $this->insertTitle('user,admin', 'Modules');
+        // $this->insertTitle('user,admin', 'Modules');
+        $this->beginDropdown('user,admin','Modules','/modules');
         $this->insertLink('user,admin,guest','All Modules','/modules');
         $module = new ModuleModel();
         $menuformodule = $module::all();
         foreach($menuformodule as $m){
         if($m->Activate_Deactivate == 'Activate'){
+          
             if($m->AssignedtoRole == 'admin'){
                 $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
                }
+              
                elseif($m->AssignedtoRole == 'user'){
                    $this->insertLink('user',$m->module_name,'/modules'.'/'.$m->id);
                    $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
@@ -170,12 +173,22 @@ class MenusTableSeeder extends Seeder
                 $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
                 $this->insertLink('guest',$m->module_name,'/modules'.'/'.$m->id);
                } 
+               
         }
       else{
           $this->insertLink('user',$m->module_name,'/module/deactivated');
           $this->insertLink('admin',$m->module_name,'/module/deactivated');
       }
+     
+      if($m->isGeneralModule == 'True'){
+        $this->insertLink('user',$m->module_name,'/modules'.'/'.$m->id);
+        $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
+        $this->insertLink('guest',$m->module_name,'/modules'.'/'.$m->id);
+      }
+      
         }
+        $this->endDropdown();
+      
 
         
 
