@@ -52,4 +52,14 @@ class User extends Authenticatable
     protected $attributes = [ 
         'menuroles' => 'user',
     ];
+
+
+    public function hasRoleNew($role){
+        if($role == $this->menuroles){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

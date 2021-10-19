@@ -10,7 +10,6 @@
                             <th>Module Description</th>
                             <th> Activated/Deactivated </th>
                             <th> Is General? </th>
-                            <th> Access Assigned to </th>
                             <th> Permissions granted </th>
                         
                         </tr>
@@ -30,7 +29,6 @@
                               @else:
                                 <td> {{"No"}} </td>
                               @endif
-                              <td> {{$permission->AssignedtoRole}} </td>
                               <td> {{$permission->allowed_permissions}}</td>
                        
                             </tr>

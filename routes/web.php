@@ -81,6 +81,8 @@ Route::group(['middleware' => ['get.menu']], function () {
         Route::post('mailSend/{id}',        'MailController@send')->name('mailSend');
         Route::get('/roles/move/move-up',      'RolesController@moveUp')->name('roles.up');
         Route::get('/roles/move/move-down',    'RolesController@moveDown')->name('roles.down');
+        Route::get('/modules/{id}','ModuleController@read_modules_by_id');
+        Route::get('/modules/{id}/edit','ModuleController@edit_module_by_id');
         Route::prefix('menu/element')->group(function () { 
             Route::get('/',             'MenuElementController@index')->name('menu.index');
             Route::get('/move-up',      'MenuElementController@moveUp')->name('menu.up');
@@ -181,10 +183,10 @@ Route::group(['middleware' => ['get.menu']], function () {
         });
 
 
-        Route::group(['middleware'=>['permission:can_view']],function(){
+        Route::group(['middleware'=>['permission:can_view','role:user']],function(){
           Route::get('/modules/{id}','ModuleController@read_modules_by_id');
         });
-       Route::group(['middleware'=>['permission:can_edit']],function(){
+       Route::group(['middleware'=>['permission:can_edit','role:user']],function(){
           Route::get('/modules/{id}/edit','ModuleController@edit_module_by_id');
        });
     });

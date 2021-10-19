@@ -25,7 +25,7 @@ class permissionMiddleware
        
         $perms = $per::where('module_id','=',$id)->first();
     
-
+        
           if(in_array($perm,explode(',',$perms->allowed_permissions))){
             return $next($request);
         }else{

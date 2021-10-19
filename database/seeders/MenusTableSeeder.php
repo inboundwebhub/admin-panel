@@ -153,7 +153,7 @@ class MenusTableSeeder extends Seeder
         
         // $this->insertTitle('user,admin', 'Modules');
         $this->beginDropdown('user,admin','Modules','/modules');
-        $this->insertLink('user,admin,guest','All Modules','/modules');
+        // $this->insertLink('user,admin,guest','All Modules','/modules');
         $module = new ModuleModel();
         $menuformodule = $module::all();
         foreach($menuformodule as $m){

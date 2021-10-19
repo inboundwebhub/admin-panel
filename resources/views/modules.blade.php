@@ -18,7 +18,7 @@
                             <th>Module Description</th>
                             <th> Activated/Deactivated </th>
                             <th> Is General? </th>
-                            <th> Access Assigned to </th>
+                            <!-- <th> Access Assigned to </th> -->
                             <th> </th>
                             <th> </th>
                             <th> </th>
@@ -39,7 +39,7 @@
                               @else:
                                 <td> {{"No"}} </td>
                               @endif
-                              <td> {{$permission->AssignedtoRole}} </td>
+                              <!-- <td> </td> -->
 
                              
                               @if($permission->AssignedtoRole == 'admin' and in_array('can_view',explode(',',$permission->allowed_permissions)))
