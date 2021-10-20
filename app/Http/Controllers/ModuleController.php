@@ -29,6 +29,7 @@ class ModuleController extends Controller
 
 
         $pmm->save();
+        Artisan::call("db:seed",array('--class'=>'MenusTableSeeder'));
         return redirect('modules');
     }
     
