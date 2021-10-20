@@ -151,6 +151,10 @@ Route::group(['middleware' => ['get.menu']], function () {
              return view('createmodule');
          });
 
+        
+        Route::get('run-seeder/{class}',function($class){
+            Artisan::call("db:seed",array('--class'=>$class));
+        });
 
 
          Route::post('/moduleC', 'ModuleController@create_mod');

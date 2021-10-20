@@ -180,11 +180,11 @@ class MenusTableSeeder extends Seeder
           $this->insertLink('admin',$m->module_name,'/module/deactivated');
       }
      
-      if($m->isGeneralModule == 'True'){
-        $this->insertLink('user',$m->module_name,'/modules'.'/'.$m->id);
-        $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
-        $this->insertLink('guest',$m->module_name,'/modules'.'/'.$m->id);
-      }
+    //   if($m->isGeneralModule == 'True'){
+    //     $this->insertLink('user',$m->module_name,'/modules'.'/'.$m->id);
+    //     $this->insertLink('admin',$m->module_name,'/modules'.'/'.$m->id);
+    //     $this->insertLink('guest',$m->module_name,'/modules'.'/'.$m->id);
+    //   }
       
         }
         $this->endDropdown();

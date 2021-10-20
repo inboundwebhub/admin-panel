@@ -9,7 +9,7 @@
         <div class="card">
           <div class="card-header"><h4>Create new module</h4></div>
             <div class="card-body">
-            <form method = "post" action="/moduleC">
+            <form method = "post" action="/moduleC" id = "cForm">
             @method('POST')
             @csrf
    <br><br><input type="text" name = "module_name" placeholder="Module name here">
@@ -44,7 +44,7 @@
       @foreach($perms as $perm)
       <br><br><input type = "checkbox" name = "permissions[]" class = "check" value = "{{$perm->Permission_name}}"> {{$perm->Permission_name}}
       @endforeach
-
+      <a href = "{{ url('/run-seeder/MenusTableSeeder'); }}" class = "seeder" style="display:none">Seeder</a>
    <br><br> <input type ="submit" value="Submit Data" class="btn btn-lg btn-primary">
    </form>
    </div>
@@ -59,4 +59,16 @@
  @section('javascript')
  <script src = "https://code.jquery.com/jquery-3.6.0.min.js"> </script>
  <script src = {{ asset('js/auto_select.js') }}> </script>
+
+
+ <script>
+  $(document).ready(function(e){
+     $('#cForm').submit(function(){
+         $('.seeder').click();
+     });
+     $('.seeder').click(function(e){
+       alert('seeder link clicked');
+     })
+  });
+   </script>
  @endsection
