@@ -42,7 +42,7 @@
                               <!-- <td> </td> -->
 
                              
-                              @if($permission->AssignedtoRole == 'admin')
+                              @if($permission->AssignedtoRole == 'admin' and can('admin'))
                               <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
                              
