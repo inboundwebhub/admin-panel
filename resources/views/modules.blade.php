@@ -42,16 +42,17 @@
                               <!-- <td> </td> -->
 
                              
-                              @if($permission->AssignedtoRole == 'admin' and in_array('can_view',explode(',',$permission->allowed_permissions)))
+                              @if($permission->AssignedtoRole == 'admin')
                               <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
                              
                               @elseif($permission->AssignedtoRole == 'user' and in_array('can_view',explode(',',$permission->allowed_permissions)))
                               <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
+                              @elseif($permission->AssignedtoRole == 'user' and in_array('can_edit',explode(',',$permission->allowed_permissions)))
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
                            
                               @else
-                              <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary" style="">View</a></td>
+                              <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary" style="pointer-events: none;">View</a></td>
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
                               @endif 
                               <td><form action="" method="POST">
