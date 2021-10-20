@@ -41,11 +41,10 @@
                               @endif
                               <!-- <td> </td> -->
 
-                             
-                              @if($permission->AssignedtoRole == 'admin' and can('admin'))
+                              @can('admin')
                               <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
-                             
+                             @endcan
                               @elseif($permission->AssignedtoRole == 'user' and in_array('can_view',explode(',',$permission->allowed_permissions)))
                               <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
                               @elseif($permission->AssignedtoRole == 'user' and in_array('can_edit',explode(',',$permission->allowed_permissions)))
