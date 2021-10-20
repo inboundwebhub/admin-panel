@@ -44,7 +44,7 @@
       @foreach($perms as $perm)
       <br><br><input type = "checkbox" name = "permissions[]" class = "check" value = "{{$perm->Permission_name}}"> {{$perm->Permission_name}}
       @endforeach
-      <a href = "{{ url('/run-seeder/MenusTableSeeder'); }}" class = "seeder" style="display:none">Seeder</a>
+      
    <br><br> <input type ="submit" value="Submit Data" class="btn btn-lg btn-primary">
    </form>
    </div>
@@ -61,14 +61,5 @@
  <script src = {{ asset('js/auto_select.js') }}> </script>
 
 
- <script>
-  $(document).ready(function(e){
-     $('#cForm').submit(function(){
-         $('.seeder').click();
-     });
-     $('.seeder').click(function(e){
-       alert('seeder link clicked');
-     })
-  });
-   </script>
+
  @endsection
