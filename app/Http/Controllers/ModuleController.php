@@ -8,6 +8,7 @@ use App\Models\Rolemodel;
 use App\Models\PermModel;
 use App\Models\permission_moduleModel;
 use DB;
+use Artisan;
 class ModuleController extends Controller
 {
     public function create_mod(Request $request){
