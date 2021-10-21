@@ -26,7 +26,7 @@
                         @endif
                         <br>
                         <h4> Assigned To: {{$module->AssignedtoRole}} </h4>
-                        @can('Admin')
+                        @can('admin')
                         <a href="{{ url('/modules') }}" class="btn btn-block btn-primary">{{ __('Return') }}</a>
                         @endcan
                         @can('user')
