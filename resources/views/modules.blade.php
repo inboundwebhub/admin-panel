@@ -11,6 +11,7 @@
      <h1> Modules</h1>
      <a class="btn btn-lg btn-primary" href="{{url('/newmodule')}}">Add new module</a>
      <a class= "btn btn-lg btn-primary" href="{{url('/viewPermissions')}}"> View Permissions </a>
+<div class = "admin-view">
      <table class="table table-striped table-bordered datatable">
                     <thead>
                         <tr>
@@ -70,4 +71,5 @@
                           @endforeach
                         </tbody>
                 </table>
+</div>
 @endsection
