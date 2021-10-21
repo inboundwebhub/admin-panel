@@ -47,10 +47,9 @@
                               <!-- <td> </td> -->
 
                               @can('admin')
-                              @if($permission->AssignedtoRole == 'admin')
                               <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
                               <td>  <a href="{{ url('/modules/'.$permission->module_id.'/edit') }}" class="btn btn-block btn-primary">Edit</a></td>
-                             @endcan
+                              @endcan
                              @can('user')
                               @elseif($permission->AssignedtoRole == 'user' and in_array('can_view',explode(',',$permission->allowed_permissions)))
                               <td>  <a href="{{ url('/modules/'.$permission->module_id) }}" class="btn btn-block btn-primary">View</a></td>
