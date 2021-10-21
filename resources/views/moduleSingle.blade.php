@@ -27,10 +27,10 @@
                         <br>
                         <h4> Assigned To: {{$module->AssignedtoRole}} </h4>
                         @can('Admin')
-                        <a href="{{ url('/') }}" class="btn btn-block btn-primary">{{ __('Return') }}</a>
+                        <a href="{{ url('/modules') }}" class="btn btn-block btn-primary">{{ __('Return') }}</a>
                         @endcan
                         @can('user')
-                        <a href="{{ url('/modules') }}" class="btn btn-block btn-primary">{{ __('Return') }}</a>
+                        <a href="{{ url('/') }}" class="btn btn-block btn-primary">{{ __('Return') }}</a>
                         @endcan
                     </div>
                 </div>
