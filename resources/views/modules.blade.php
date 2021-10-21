@@ -7,8 +7,9 @@
 </style>
 @endsection
 @section('content')
-   
-     <h1> Modules</h1>
+   <div class = "title">
+     <h1> Modules </h1>
+   </div>
      <div class="buttons">
     
        <a class="btn btn-lg btn-primary" href="{{url('/newmodule')}}">Add new module</a>
