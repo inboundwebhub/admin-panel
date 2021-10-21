@@ -10,12 +10,9 @@
    
      <h1> Modules</h1>
      <div class="buttons">
-     <div class = "align-left">
+    
        <a class="btn btn-lg btn-primary" href="{{url('/newmodule')}}">Add new module</a>
-     </div>
-    <div class = "align-right">
      <a class= "btn btn-lg btn-primary" href="{{url('/viewPermissions')}}"> View Permissions </a>
-    </div>
     </div>
 <div class = "admin-view">
      <table class="table table-striped table-bordered datatable">
